@@ -1,9 +1,9 @@
 ---
-标题: 使用Visual Studio团队服务进行敏捷规划和项目组合管理
-布局: 网页
-sidebar: VSTS
-链接: /labs/vsts/agile/
-文件夹: /labs/vsts/agile/
+-title: 使用Visual Studio团队服务进行敏捷规划和项目组合管理
+-layout: page
+-sidebar: vsts
+-permalink: /labs/vsts/agile/
+-folder: /labs/vsts/agile/
 ---
 
 最终更新时间 : {{ "now" | date: "%b %d, %Y" }}.
