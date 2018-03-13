@@ -1,9 +1,9 @@
 ---
--title: 使用Visual Studio团队服务进行敏捷规划和项目组合管理
--layout: page
--sidebar: vsts
--permalink: /labs/vsts/agile/
--folder: /labs/vsts/agile/
+title: Agile Planning and Portfolio Management with Visual Studio Team Services
+layout: page
+sidebar: vsts
+permalink: /labs/vsts/agile/
+folder: /labs/vsts/agile/
 ---
 
 最终更新时间 : {{ "now" | date: "%b %d, %Y" }}.
