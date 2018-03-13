@@ -1,22 +1,22 @@
-repository: Microsoft/ALMVM
+﻿repository: Lean-Soft/almvm-cn
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title:  Microsoft Visual Studio
+topnav_title:  微软研发云动手实验
 # this appears on the top navigation bar next to the home button
 
-site_title: Microsoft Visual Studio DevOps Hands-on-Labs
+site_title: 微软研发云动手实验
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: Microsoft
 # this appears in the footer
 
-github_editme_path: microsoft/almvm
+github_editme_path: Lean-Soft/almvm-cn
 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
-disqus_shortname: almvm
+disqus_shortname: almvm-cn
 # if you're using disqus for comments, add the shortname here. if not, leave this value blank.
 
 host: 127.0.0.1
@@ -105,12 +105,12 @@ description: "RSS Feed for Microsoft Visual Studio ALM Virtual Machine"
 
 # needed for sitemap.xml file only
 #url: https://microsoft.github.io
-#baseurl: /almvm/
+#baseurl: /almvm-cn/
 # changing to Azure
-url: https://almvm.azurewebsites.net
+url:  https://almvm.devopshub.cn
 baseurl: /
 
-site.google_analytics: UA-93010880-1
+#site.google_analytics: UA-93010880-1
 
 
 plugins:

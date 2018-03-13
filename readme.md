@@ -1,4 +1,4 @@
----
+ï»¿---
 layout: homepage
 title: Home
 keywords: ALM VM homepage
@@ -15,36 +15,36 @@ summary:
 <div class="rowMain">
 <div class="productcolmain">
   <div class="pageheader">
-             <b>Î¢ÈíÑĞ·¢ÔÆDevOps¶¯ÊÖÊµÑé</b> </div>
+             <b>å¾®è½¯ç ”å‘äº‘DevOpsåŠ¨æ‰‹å®éªŒ</b> </div>
      <div class="herotext2">       
-              Team Foundation Server ºÍ Visual Studio Team Services ¶¯ÊÖÊµÑé
+              Team Foundation Server å’Œ Visual Studio Team Services åŠ¨æ‰‹å®éªŒ
   </div>
 </div>
 </div>
 
 <br>
 <span class="introText">
-Î¢ÈíÑĞ·¢ÔÆ DevOps ¶¯ÊÖÊµÑé ÊÇÒ»ÏµÁĞµÄÁ·Ï°ºÍÊµÑé£¬ÕâÆäÖĞ°üÀ¨ÁË·á¸»ÄÚÈİ£¬Í¨¹ıÕâĞ©ÎÄµµ¡¢ÊµÑéºÍÁ·Ï°£¬¿ÉÒÔÈÃÎÒÃÇÌåÑé Microsoft Visual Studio Team Foundation Server/Visual Studio Team Services ÔÚ ALM/DevOps ·½ÃæÌá¹©µÄÄÜÁ¦£¬Ê¹µÃÎÒÃÇÄÜ¸üºÃµÄÀûÓÃÎ¢ÈíµÄ¹¤¾ß¸ÄÉÆÎÒÃÇµÄ½»¸¶Á÷³Ì£¬Ê¹ÎÒÃÇµÄÆóÒµ¸ü¾ß¾ºÕùÁ¦¡£ 
+å¾®è½¯ç ”å‘äº‘ DevOps åŠ¨æ‰‹å®éªŒ æ˜¯ä¸€ç³»åˆ—çš„ç»ƒä¹ å’Œå®éªŒï¼Œè¿™å…¶ä¸­åŒ…æ‹¬äº†ä¸°å¯Œå†…å®¹ï¼Œé€šè¿‡è¿™äº›æ–‡æ¡£ã€å®éªŒå’Œç»ƒä¹ ï¼Œå¯ä»¥è®©æˆ‘ä»¬ä½“éªŒ Microsoft Visual Studio Team Foundation Server/Visual Studio Team Services åœ¨ ALM/DevOps æ–¹é¢æä¾›çš„èƒ½åŠ›ï¼Œä½¿å¾—æˆ‘ä»¬èƒ½æ›´å¥½çš„åˆ©ç”¨å¾®è½¯çš„å·¥å…·æ”¹å–„æˆ‘ä»¬çš„äº¤ä»˜æµç¨‹ï¼Œä½¿æˆ‘ä»¬çš„ä¼ä¸šæ›´å…·ç«äº‰åŠ›ã€‚ 
 </span>
 <br />
 <br />
  <div align="center" class="labcols">
 <div class="row" style="margin-left: 70px;">
     <div class="lab-item col-md-4" align="center">
-          <span class="headnews"> <b> <a href="labs/tfs" class="labmain"> ¿ªÊ¼Ñ§Ï° Visual Studio Team Foundation Server</a></b></span><br />
+          <span class="headnews"> <b> <a href="labs/tfs" class="labmain"> å¼€å§‹å­¦ä¹  Visual Studio Team Foundation Server</a></b></span><br />
              <a href="labs/tfs"><img style="margin: 10px;" src="images/tile-self-hosted-server.png" width="120" height="120"/></a><br />
-           <a href="labs/tfs" class="c-glyph"><span class="lab-details">¿ªÊ¼Á·Ï°</span></a>
+           <a href="labs/tfs" class="c-glyph"><span class="lab-details">å¼€å§‹ç»ƒä¹ </span></a>
     </div>
     <div class="lab-item col-md-4" align="center">
-         <span class="headnews"> <b><a href="labs/vsts" class="labmain"> ¿ªÊ¼Ñ§Ï° Visual Studio Team Services</a></b></span><br />
+         <span class="headnews"> <b><a href="labs/vsts" class="labmain"> å¼€å§‹å­¦ä¹  Visual Studio Team Services</a></b></span><br />
         <a href="labs/vsts"><img style="margin: 10px;" src="images/tile-cloud-hosted-server.png" width="120" height="120"/></a><br />
-       <a href="labs/vsts" class="c-glyph"><span class="lab-details">¿ªÊ¼Á·Ï°</span></a>
+       <a href="labs/vsts" class="c-glyph"><span class="lab-details">å¼€å§‹ç»ƒä¹ </span></a>
     </div>
      <div class="lab-item col-md-4" align="center">
-         <span class="headnews"> <b><a href="labs/vstsextend" class="labmain"> À©Õ¹ºÍ¼¯³É Visual Studio Team Services</a></b></span><br />
+         <span class="headnews"> <b><a href="labs/vstsextend" class="labmain"> æ‰©å±•å’Œé›†æˆ Visual Studio Team Services</a></b></span><br />
         <a href="labs/vstsextend"><img style="margin: 10px;" src="images/tile-integrate-with-cloud-services.png" width="120" height="120"/></a><br />
        <!--span class="mainPageText"> DevOps with Visual Studio Team Services for Java</span><br /><br /-->
-       <a href="labs/vstsextend" class="c-glyph"><span class="lab-details">¿ªÊ¼Á·Ï°</span></a>
+       <a href="labs/vstsextend" class="c-glyph"><span class="lab-details">å¼€å§‹ç»ƒä¹ </span></a>
     </div>
 </div>
 </div>
