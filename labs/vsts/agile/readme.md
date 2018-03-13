@@ -1,5 +1,5 @@
 ---
-title: Agile Planning and Portfolio Management with Visual Studio Team Services
+title: 使用Visual Studio团队服务进行敏捷规划和项目组合管理
 layout: page
 sidebar: vsts
 permalink: /labs/vsts/agile/
