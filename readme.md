@@ -1,4 +1,4 @@
-﻿---
+---
 layout: homepage
 title: Home
 keywords: ALM VM homepage
