@@ -1,5 +1,5 @@
 ---
-title: Version Controlling with Git using VSTS
+title: 在Visual Studio团队服务中使用Git版本控制
 layout: page
 sidebar: vsts
 permalink: /labs/vsts/git/
@@ -8,507 +8,499 @@ folder: /labs/vsts/git/
 
 Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
-## Overview
+## 概述
 
-Team Services supports two types of version control Git and Team Foundation Version Control (TFVC). Here is a quick overview of the two version control systems:
+团队服务支持两种类型的版本控制:Git和Team Foundation 版本控制（TFVC）。以下是两个版本控制系统的简要概述：
 
- -**Team Foundation Version Control (TFVC)**: TFVC is a centralized version control system. Typically, team members have only one version of each file on their dev machines. Historical data is maintained only on the server. Branches are path-based and created on the server.
+ -**Team Foundation Version Control (TFVC)**: TFVC 是一种集中式的版本控制系统. 通常，在团队成员的开发机器上，每个文件只有一个版本，历史数据仅在服务器上维护。分支是基于路径的，并在服务器上创建。
 
- -**Git**: Git is a distributed version control system. Git repositories can live locally (such as on a developer’s machine). Each developer has a copy of the source repository on their dev machine. Developers can commit each set of changes on their dev machine and perform version control operations such as history and compare without a network connection.
+ -**Git**: Git 是一种分布式的版本控制系统. Git 仓库在可以在本地工作 (比如在开发人员的机器上). 每个开发人员在其开发机器上都有一个源代码库的副本。开发人员可以在开发机器上提交文件变更集，并执行版本控制操作，如历史记录和比较，而无需网络连接.
 
-Git is the default version control provider for new projects. You should use Git for version control in your projects unless you have a specific need for centralized version control features in TFVC.
+在新创建的项目中，默认采用Git版本控制。我们通常建议采用Git版本控制，除非对于集中式的版本控制有特殊的需要，那可以采用TFVC版本控制系统.
 
-In this lab, you will learn how to establish a local Git repository, which can easily be synchronized with a centralized Git repository in Visual Studio Team Services. In addition, you will learn about Git branching and merging support.
+在本实验中，您将学习如何建立本地Git库，该存储库可以很轻松的同步到Visual Studio 团队服务的Git存储库中。另外，您将学会Git分支和合并等操作。
 
-## Exercise 1: Cloning an existing repository
+## 练习 1: 克隆现有的Git存储库
 
-1. Sign in to your **Visual Studio Team Services** account and browse to **MyhealthClinic** project.
+1. 登陆到 **Visual Studio 团队** 帐户，导航到 **MyhealthClinic** 项目.
 
     ![](images/78.png)
 
-1. Navigate to the **Code** hub. Select **Clone** and select **Clone in Visual Studio**
+1. 导航到**Code**，选择**Clone** ，在克隆窗口中选择 **Clone in Visual Studio**
 
     ![](images/clonecode.png)
 
-1. Click **Yes**
+1. 点击 **Yes**
 
     ![](images/9.png)
 
-1. You might be prompted to sign into to your account from Visual Studio. Sign in to your account
+1. 系统会提示需要从Visual Studio登录到团队服务帐户，登录到您的帐户
 
-1. Click on **Clone this repository**
+1. 点击 **Clone this repository**
 
     ![](images/3.png)
 
-1. Set the local path where you want the local repository to be placed and select **Clone**.
+1. 设置存储库的存放路径，然后选择 **Clone**，会将远程存储库克隆到本地
 
     ![](images/clonewindowvs.png)
 
-    This will clone the remote repository to the local repository.
-
-1. Select **Show Folder View** under *Solutions* to see all the solutions in the local git folder
+    
+1.在 *Solutions* 下，选择 **Show Folder View**，查看本地Git存储库中的解决方案文件
 
     ![](images/showfolderview.png)
 
-1. Double click the **MHC_ASPNetCore.sln** to open the solution
+1. 双击 **MHC_ASPNetCore.sln**，打开解决方案。
 
-## Exercise 2: Save work with commits
+## 练习 2: 使用提交（commits）来保存工作
 
-When you make changes to your files, Git will record the changes in the local repository. You can select the changes that you want to commit by staging the changes. Commits are always made against your local Git repository, so you don't have to worry about the commit being perfect or ready to share with others. You can make more commits as you continue to work, and push the changes to others when they are ready to be shared.
+当你对文件进行修改时，Git会将修改记录保存在本地存储库。您可以通过暂存更改来选择要提交的更改。提交通常是针对您的本地Git存储库进行的，因此不必担心编写未完成会与他人分享，可以继续之前的工作，并提交到本地，直到工作已经完成，可以与他人分享时，再推送这些变更到服务器。
 
-What's in a commit?
+什么是一次提交（commit）?
 
-Git commits consists of the following-
+Git 提交（commits） 由以下内容组成-
 
-- The file(s) changed in the commit. Git keeps the contents of all file changes in your repo in the commits. This keeps it fast and allows intelligent merging.
+- 这次提交的文件变化， Git在提交中保存了所有变更文件的内容，这样使Git能更快速、智能的进行合并
 
-- A reference to the parent commit(s). Git manages your code history using these references.
+- 对父提交的引用， Git通过这些引用来管理代码变化的历史记录
 
-- A message describing a commit. You give this message to Git when you create the commit. It's a good idea to keep this message descriptive, but to the point.
+- 对此次提交的注释
 
-### Task 1: Committing Changes
+### 任务 1: 提交更改
 
-1. Open Visual Studio.
+1. 打开 Visual Studio.
 
-1. Go to **Team Explorer** home.
+1. 转到 **Team Explorer** 主面.
 
    ![](images/11.jpg)
 
-1. Open the **01_Demos_ASPNET5** solution.
+1.打开 **01_Demos_ASPNET5** 解决方案.
 
    ![](images/12.jpg)
 
-1. Expand the **MyHealthAPI project**. Go to the **controller** folder and modify any one of the controllers.
-   As you write your code, changes are automatically tracked by Visual Studio.
+1. 展开 **MyHealthAPI项目**. 转到 **controller** 文件夹，修改其中一个文件的代码.
+   当你修改代码时，Visual Studio会自动跟踪变更。
 
    ![](images/13.png)
 
-1. Open the **Changes** in **Team Explorer**. Enter a commit message and select **Commit All** to create a new commit with all of your changes.
+1. 在 **Team Explorer** 中打开 **Changes** . 输入本次提交的注释，并选择 **Commit All** 来创建一次提交.
 
    ![](images/14.png)
 
    ![](images/15.png)
 
-1. As other team members update the code in the repo, you will need to sync their changes with your own code.
-   Open the sync view from the team explorer.
+1. 当其他团队成员在存储库中更新了代码，需要同步其他人的变更到本地存储库。
+   在 team explorer 中打开同步视图
 
    ![](images/16.png)
 
-### Task 2: Syncing changes
+### 任务 2: 同步变更
 
-1. Before syncing, fetch the commits to view changes that your team has made. Fetching changes does not merge the commits into your local repository. You will need to pull the changes to merge them into your local repository.
+1. 在同步之前, 先通过获取（fetch）变更来查看其他人提交的变更。 获取（Fetching）变更不会合并到你的工作目录中，使用拉取（Pull）时才会将变更合并到本地工作目录中。
 
    ![](images/17.png)
 
    ![](images/18.png)
 
-1. Sync the changes to push your commits.
+1. 使用推送（push）将本地提交的变更同步到服务器.
 
    ![](images/19.png)
 
    ![](images/20.png)
 
-1. Go back to your VSTS project. Click on **Code** \| **History** to see the commits.
+1. 回到你的VSTS项目，点击 **Code** \| **History** 来查看提交
 
    ![](images/21.png)
 
-### Task 3: Stage
+### 任务 3: 暂存（Stage）
 
-Staging changes allows you to selectively add certain files to a commit while passing over the changes made in other files. Ignore temp files, logs, and other
-files that might change but you do not want to stage in a commit.
+可以使用暂存更改来选择需要提交的文件来避免其他修改过的文件被提交. 也就是说可以忽略临时文件、日志文件或者其他文件，这些文件可能会被修改但又不想提交到存储库中。
 
-1. Switch to **Visual Studio**.
+1. 切换到 **Visual Studio**.
 
-1. Expand the **MyHealth.API** project. Go to **Controllers** folder and modify any of the existing controllers.
-   Modify two or more controllers.
-
-1. Go to **Changes** view in team explorer. You can see two files being edited. Create a commit from a individual file. Staging a change creates a section in Team Explorer.
-   This adds an entry to the file **.gitignore** in your local repo. If the ignored file was added to your repo in an earlier commit, ignoring the file will not remove it from your repo.
+1. 展开项目 **MyHealth.API** . 转到 **Controllers** 文件夹，修改其中的一个或多个任意文件.
+   
+1. 在 team explorer中，转到 **Changes** 视图. 可以看到有两个文件被编辑了. 选中一个文件来创建一个提交，在Tteam explorer中，通过 暂存（Stage）将这个文件加入到Git的Stage区域
+   这会在本地仓库中创建一个**.gitignore** 文件，如果这个忽略文件在这之前已提交，忽略此文件不会从本地存储库中移除。
 
    ![](images/22.png)
 
    ![](images/23.png)
 
-1. Click on **Commit Staged and Sync** to update your remote repository.
+1. 点击 **Commit Staged and Sync** 来更新远程存储库.
 
    ![](images/24.png)
 
-## Exercise 3: Review History
+## 练习 3: 查看历史记录
 
-Git uses the parent reference information stored in each commit to manage a full history of your development. Review this commit history to find out when file changes were made and determine differences between versions of your code.
+Git的每个提交都会保存上级引用，通过这个引用信息来管理开发过程中的历史记录。通过查找提交的历史记信息，来查找和比较本地当前版本的差异.
 
-Git’s use of **Branches and Merges** feature works through pull requests, means the commit history of your development doesn’t form a straight, chronological line. When you use history to compare versions, think in terms of file changes between two commits instead of file changes between two points in time. A recent change to a file in the master branch may have come from a commit created two weeks ago in a feature branch but was only merged yesterday.
+Git的 **Branches and Merges** 功能通过拉取请求（pull requests）来实现, 这意味着开发过程中的提交不需要按照线性方式（按照时间或先后顺序）来完成。当您使用历史记录比较文件的版本时，请考虑两次提交之间的文件更改，而不是两个时间点之间的文件更改。主分支中文件的最近更改可能来自两周前在功能分支中的提交，只是在昨天才合并。
 
-### Task 1: Compare files
+### 任务 1: 比较文件
 
-1. Open Visual Studio.
+1. 打开Visual Studio.
 
-1. Open up the Home view in Team Explorer.
+1. 打开 Team Explorer主页.
 
    ![](images/25.png)
 
-1. Expand the **MyHealth.API** project. Go to **controllers** folder and right click the controller file that you modified before and view history.
-   The history window will show the commit ID, author, date, and description of all changes to the file in your local repo across all branches.
+1. 展开 **MyHealth.API**项目. 转到 **controllers** 文件夹，修改其中的一个或多个任意文件.
+  历史记录窗口会显示 提交的 ID, 作者, 日期, 和本地存储库所有变更的注释说明
 
    ![](images/26.png)
 
-1. Right-click on the latest commit from the history window and choose **Compare with previous**.
+1. 在历史记录窗口中右击并选择一个最近的提交，选择 **Compare with previous**.
 
    ![](images/27.png)
 
-### Task 2: Retrieve files
+### 任务 2: 获取历史版本中的文件
 
-1. Right-click the controller file that you modified before and select **View History**. You can filter the commits to find the exact commit with the file version you want to restore.
+1. 右键单击您之前修改的控制器文件，然后选择 **View History**. 您可以过滤提交来查找需要恢复的文件版本.
 
-1. Right-click on the commit containing the version of the file you want to restore and select **View commit details**.
+1. 右键单击包含要还原的文件版本的提交，然后选择 **View commit details**.
 
    ![](images/28.png)
 
-1. You will see the file in your team explorer. Right click the file and select open to restore in the Commit Details in Team Explorer.
+1. 您将在团队资源管理器中看到该文件。右键单击该文件并在团队资源管理器中的提交详细信息中选择打开以还原.
 
    ![](images/29.png)
 
-## Exercise 4: Manage Branches from Visual Studio
+## 练习 4:在Visual Studio中管理Git分支
 
-Manage the work in your Team Services Git repo from the **Branches** view on the web.
-Customize the view to track the branches you care most about so you can stay on top of changes made by your team.
+在Web上的分支视图中管理Team Services Git仓库中的工作文件.
+自定义视图以跟踪您最关心的分支，这样您就可以保持团队所做的更改。
 
-### Introduction
+### 介绍
 
-Committing changes to a branch will not affect other branches, and you can share branches with others without having to merge the changes into the main project.
-Create new branches to isolate changes for a feature or a bug fix from your master branch and other work. Since the branches are lightweight, switching between branches
-is quick and easy. Git does not create multiple copies of your source when working with branches, it uses the history information stored in commits to recreate the files
-on a branch when you start working on it. Your Git workflow should create and use branches for managing features and bugfixes. The rest of the Git workflow, such as sharing
-code and reviewing code with pull requests all work through branches. Isolating work in branches makes it very simple to change what you are working on by simply changing you
-current branch.
+对分支提交更改不会影响其他分支，您可以与他人共享分支，而无需将更改合并到主项目中。创建新的分支以隔离主分支和其他工作的功能更改或错误修复。由于分支是轻量级的，所以在分支之间切换是快速和容易的。在使用分支时，Git不会创建源文件的多个副本，它会使用存储库中的历史信息来创建分支。
+您的Git工作流应该创建并使用分支来管理功能和错误修正。Git工作流程的其余部分，如共享代码和审查代码与拉请求使用分支来实现。因为Git很容易切换分支，使得通过分支来隔离工作非常容易实现。
 
-### Task 1: Create a new branch in your local repositoy
+### 任务 1: Create a new branch in your local repositoy
 
-1. Open **Team Explorer** from Visual Studio and go to the **Branches** view.
+1. 在 Visual Studio 中打开**Team Explorer** ，转到 **Branches** 视图.
 
    ![](images/30.png)
 
-1. Right-click the parent branch (usually master) to base your changes and select **New Local Branch From**.
+1. 右击主分支 (通常是基于 master 来创建子分支)， 选择 **New Local Branch From**.
 
    ![](images/31.png)
 
-1. Provide a branch name and click **create branch**.
+1. 输入分支名称并点击 **create branch**.
 
    ![](images/32.png)
 
-### Task 2: Checkout and Publish branches
+### 任务 2: 获取分支和发布分支
 
-Git keeps track of which branch you are working on and makes sure that when you checkout a branch your files match the most recent commit on the branch.
-Branches let you work with multiple versions of the source code in the same local Git repository at the same time.
+Git会跟踪您正在使用哪个分支，并确保在您获取分支时，您的文件与分支上​​最近的提交相匹配。
+分支允许您同时在同一本地Git存储库中使用多个版本的源代码
 
-1. Open **Team Explorer** from Visual Studio and go to the **Branches** view. Locate the branch you want to checkout, right-click the branch name and **checkout**.
+1. 打开**Team Explorer** ,转到 **Branches#** 视图. 定准到想检出的分支, 右击分支名然后点击 **checkout**.
 
    ![](images/33.png)
 
-1. You can make sure that you have checked out the branch which indicates at the bottom of your Visual Studio window as shown.
+1. 你可以确认已获取的分支，通常在Visual Studio窗口底部会显示当前分支，如图所示。
 
    ![](images/34.png)
 
-1. Locate the branch you want to publish.
+1. 定位到需要发布的分支.
 
    ![](images/35.png)
 
-1. Right-click the branch name and select **Publish branch**.
+1. 右键分支名并点击 **Publish branch**.
 
    ![](images/36.png)
 
-1. Go back to your VSTS account and check under the **Code** \| **Branches**, your branch was successfully published.
+1. 返回到 VSTS 帐户，查看 **Code** \| **Branches**, 可以看到发布成功的分支.
 
    ![](images/37.png)
 
-1. You can also see the branches under **remotes origin** section from your Visual Studio.
+1. 也可以在Visual Studio分支下面的 **remotes origin** 节点查看远程分支
 
    ![](images/38.png)
 
-### Task 3: Deleting branches locally and remotely
+### 任务 3: 删除本地分支和远程分支
 
 {% include note.html content= "Deleting a branch in your local repo doesn't remove the branch on the remote." %}
 
-1. Open **Team Explorer** from Visual Studio and go to the **Branches** view. Locate the branch you want to delete.
-   Make sure that you aren't checked out to that branch. You can't delete the branch you are currently working in.
+1. 打开**Team Explorer** ，转到 **Branches#** 视图. 定位到想删除的分支中.
+   确保你没有签出到该分支（当前工作分支），不可以删除牌当前工作中的分支.
 
    ![](images/39.png)
 
-1. Select **delete**. You should see the message after the deletion.
+1. 选择 **delete**. 删除后，应该可以看到提示信息.
 
    ![](images/40.png)
 
-1. Let's try to delete a a remote branch. Locate the tree for the remote branch in Team Explorer such as (remotes/origin).
-   Right click on the branch you wish to delete and select **Delete Branch From Remote**.
+1. 删除远程分支. 先要定位到远程分支中，在 Team Explorer的分支视图中的节点：remotes/origin
+   右击 想要删除的分支，然后点击 **Delete Branch From Remote**.
 
    ![](images/41.png)
 
-1. You should receive a successful message post deletion.
+1. 删除后，应该可以看到提示信息.
 
    ![](images/42.png)
 
-1. Go back to your VSTS project. Click on **Code** \| **Branches** to make sure that you don't see the branch that you deleted.
+1. 返回 VSTS项目中， 点击 **Code** \| **Branches** 确认分支已被删除
 
    ![](images/43.png)
 
-## Exercise 5: Manage branches from the Team Services Portal
+## 练习 5: 在团队门户网站中管理分支
 
-### Task 1: Creating New Branch
+### 任务 1: 创建新分支
 
-1. Sign in to your Visual Studio Team Services account.
+1. 登陆到 Visual Studio 团队服务网站.
 
-1. Go to **Code** \| **Branches** and click on **New Branch** to create.
+1. 转到 **Code** \| **Branches** ,点击 **New Branch** 创建分支.
 
    ![](images/44.png)
 
-1. In the Create a branch dialog, enter a name for your new branch. Select a branch to base on and associate any work items if necessary and click on **create**.
+1. 在创建分支对话框中，输入新分支的名称，选择一个上级分支,根据需要确认是否要关联工作项,点击 **create**.
 
    ![](images/45.png)
 
-1. Post creation, you should be able to see under your branches.
+1. 创建后，可以看到创建好的分支.
 
    ![](images/46.png)
 
-1. Go back to your Visual Studio to see the branch that was created. You will need to **fetch** the branch before you can swap to it in your local repo.
+1. 返回到Visual Studio查看创建的分支。需要 **fetch** 分支信息，才能在本地存储库中切换到新的分支。
 
-1. Open Team Explorer and go to Sync view and click **fetch**.
+1. 打开Team Explorer ，转到 同步视图点击 **fetch**.
 
    ![](images/47.png)
 
    ![](images/48.png)
 
-1. Go to the **Branches** view to see if the remote branch is available.
+1. 转到 **Branches#** 视图 来查看远程分支是否可用.
 
    ![](images/49.png)
 
-1. Locate the remote branch you want to checkout to your local repository. Right click the branch name and select **New Local Branch From**.
+1. 定位到想要获取到本地存储库的远程分支，右键单击分支名称并选择**New Local Branch From**.
 
    ![](images/50.png)
 
-1. Provide a name for the local branch and click on **create**.
+1. 为本地分支输入一个分支名称，点击 **create**.
 
    ![](images/51.png)
 
-1. You should now see the local branch post creation.
+1. 可以看到获取并创建好的本地分支
 
      ![](images/52.png)
 
-### Task 2: Deleting a branch
+### 任务 2: 删除一个分支
 
-1. Locate the branches from the web.
+1. 在Web页面中定位分支.
 
    ![](images/46.png)
 
-1. Select the **trashcan** icon next to the branch you want to delete.
+1. 点击 分支右边的 **trashcan** 图标按钮
 
    ![](images/53.png)
 
-1. Once deleted, you should see something like this.  You can revert back by clicking **undo** if you accidentally delete a branch.
+1.一旦删除，可以看到下图的状态，如果意外删除分支，您可以通过点击 **undo** 来恢复
 
    ![](images/54.png)
 
-### Task 3: Locking Branch
+### 任务 3: 锁定分支
 
-Locking is ideal for preventing new changes that might conflict with an important merge or to place a branch into a read-only state.
-Use branch policies and pull requests instead of locking if you just want to ensure that changes in a branch are reviewed before they are merged.
+锁定用于防止新的更改造成冲突，或将分支置为只读状态。如果只想确保分支中的更改在合并之前进行审阅，请使用分支策略和拉取请求，而不是锁定整个分支。
 
-Locking does not prevent cloning of a repo or fetching updates made in the branch into your local repo.
-Share with your team the reason for locking the branch and make sure your team knows what to do to work with the branch after it is unlocked.
+锁定不会阻止Clone Git存储库，也不会阻止将分支中的更新获取到本地repo中。与您的团队分享锁定分支的原因，并确保您的团队知道在解锁后如何处理分支。
 
-1. Locate the branches from the web. Select the branch that you want to lock.
+1. 在Web页面中定位分支，选择您想要锁定的分支
 
-1. Lock the branch by selecting the **...** icon next to the branch name and then select **Lock** from the menu.
+1. 点击分支中的 **...** 图标，在弹出出来的菜单中选择 **Lock** 
 
    ![](images/55.png)
 
-1. You should see the lock symbol after locking the branch.
+1. 分支被锁定后，会看到有一个像锁一样的标识符
 
    ![](images/56.png)
 
-1. You can unlock the branch by selecting the **Unlock** from the menu.
+1. 在菜单中点击 **Unlock** 解锁分支.
 
-## Exercise 6: Pull requests
+## 练习 6: 拉取请求（Pull requests）
 
-Pull requests let your team give feedback on changes in feature branches before merging the code into the master branch.
-Reviewers can step through the proposed changes, leave comments, and vote to approve or reject the code.
+在将代码合并到主分支之前，拉取请求可让您的团队对功能分支中的更改提供反馈。审阅者可以逐步完成建议的更改，发表评论，并投票批准或拒绝代码 。
 
-### Task 1: Create a new pull request from Team Explorer in Visual Studio
+### 任务 1: 在 Visual Studio 的 Team Explorer 创建拉取请求  
 
-1. Open **Team Explorer** from Visual Studio and go to the **Branches** view. Checkout the **dev** branch. If you don't have one, create.
+1. 打开**Team Explorer** ， 转到 **Branches#** 视图. 签出 **dev** 分支. 如果没有则创建一个分支
 
-1. Load the **01_Demos_ASPNET5** solution.
+1. 打开 **01_Demos_ASPNET5** 解决方案.
 
-1. Expand the **MyHealth.API** project. Go to **Controllers** folder and modify any one of the controller file and sync the changes to push your commits and pull changes from others.
+1. 展开 **MyHealth.API**项目. 转到 **Controllers** 文件夹修改任意文件，并推送到服务器，并确保同步了其他人的提交
 
    ![](images/57.png)
 
-1. Now, your changes are updated in remote dev branch.
+1. 现在所有改动已经同步到本地
 
-1. Go to the Team Explorer Home view.
+1. 转到 the Team Explorer 主页.
 
-1. Select **Pull requests** from Team Explorer pane. You will promote changes from dev to Master branch.
+1. 点击 **Pull requests** 
 
    ![](images/58.png)
 
-1. Select the **New Pull Request** link to open up a browser window to create a new pull request on the web.
+1. 点击 **New Pull Request** ,会打开一个新Web网页，在Web网页中完成创建
 
    ![](images/59.png)
 
-1. You can Link work items and describe the changes in the branch to make it easier for others to see what problem you are trying to solve. You can also add reviewers.
+1. 您可以链接工作项，描述分支中的更改，以便其他人更轻松地查看您尝试解决的问题。您还可以添加审阅者。
 
    ![](images/60.png)
 
-1. Click on **New Pull Request** to create. You should see the overview. You can approve, add comments and do lot more.
+1. 点击 **New Pull Request** 执行创建. 在概念页面中，可以进行审批，添加注释等等
 
    ![](images/61.png)
 
-### Task 2: Manage Pull requests
+### 任务 2: 管理拉取（Pull requests
 
-Manage your pull requests you own or are assigned to with the Pull Requests tab in the Code view on the web.
+在 Code 中心下面的tab页面：Pull Request 中来管理自己创建的或者是分配拉取请求 
 
-1. Open the Pull Request view while viewing your repo on the web. Select **Active** to show all active pull requests for the current repo.
-   You can also select Completed or Abandoned to bring up a history of closed pull requests.
+1. 打开 Pull Request view, 点击 **Active** ,查看当前存储库中活动的拉取请求.
+
+   也可以查看完成的、取消的、或是关闭的拉取请求
 
    ![](images/62.png)
 
-1. Select any of the existing pull request assigned to you. The Overview tab shows the current state of the pull request at a glance.
+1. 进入拉取请求的总览页面，整个页面一目了然地显示了拉取请求的当前状态
 
    ![](images/63.png)
 
-1. Review the title, description, and discussion to get an understanding of the proposed changes and see issues brought up by other reviewers.
+1. 查看标题，描述和讨论，以便了解代码审阅建议，或是查看其他审阅者提出的问题。
 
-1. Select the **Files** tab to view the differences between the most changes between the source and target branch of the pull request.
+1. 在 **Files** 选项卡中，查看拉取请求的源分支和目标分支之间的文件差异
 
    ![](images/64.png)
 
-1. Review previous versions of the code pushed to the source branch of the pull request from the **All changes** drop-down.
-   A new version is added to the list in the drop-down and on the Updates tab every time the branch is updated in Team Services.
+1. 查看从**All changes**下拉列表中推送到拉取请求的源分支的以前版本的代码。
+
+    当有新的变更提交到Dev分支时，下拉列表和更新列表会自动进行更新
 
    ![](images/65.png)
 
-1. Locate the file where you want to add a new comment.
+1. 找到想添加注释的文件
 
    ![](images/66.png)
 
-1. Add comments to the pull request to make suggestions, reply to previous comments, and point out problems with the proposed changes.
+1. 在下图中，可以为拉取请求添加评论以提出建议，回复以前的评论，并指出提出的更改存在的问题.
 
    ![](images/67.png)
-1. We can change to Tree view to get the proper structure of the source code or just list files. We can also view all the comments/active comments/hide comments.
+
+1. 我们可以更改为树视图以获取源代码的正确结构或仅列出文件。我们还可以查看所有评论/活跃评论/隐藏评论
 
    ![](images/68.png)
 
-1. Browse a list of changes by push from the author using the Updates tab.
+1. 通过查看 update 选项卡中的提交记录，可以知道是哪些人提交了代码
 
    ![](images/69.png)
 
-1. You can select and view changes made in commits on the branch in the **Commits** tab.
+1. 可以通过 **Commits** 选项卡页面，查看此分支所有提交的注释
 
     ![](images/70.png)
 
-1. Go back to the **Files** Tab. Click on the **comments** to check the details of the files modified and comments given by reviewer.
+1. 返回到 **Files** 选项卡. 点击  **comments** ，查看修改后的文件和评论者的评论信息
 
-    > New comments start in Active status and can be updated using the drop-down in the comment to:
+    > 新的评论状态为Active活动状态，可以通过点击下拉框来更新评论状态:
 
-    - **Active:** Comment is still under review.
-    - **Resolved:** The issue brought up in this comment has been fixed.
-    - **Pending:** The issue in this comment will be addressed, but isn't fixed yet.
-    - **Won't Fix:** Note the suggestion in the comment, but don't make changes in this pull request to address it.
-    - **Closed:** Discussion for this comment is closed.
+    - **Active:** 评论处于审查中.
+    - **Resolved:** 评论提到的问题已经解决.
+    - **Pending:** 评论中的问题将会被处理，但还没解决.
+    - **Won't Fix:** 注意评论中的建议，但不会修复
+    - **Closed:** 此评论的讨论已关闭.
 
     ![](images/71.png)
 
-1. Click **Approve** in the upper right of the pull request view.
+1. 在拉取请求视图中点击 **Approve** 
 
-    > The default option is Approve, but you can select other options from the drop-down:
+    > 默认为批准，也可以从下拉列表中选择其他选项:
 
-      - **Approve with suggestions :** Agree with the pull request, but provide optional suggestions to improve the code.
-      - **Waiting for the author :** Do not approve the changes, and ask the author to review your comments. The author should let you know when you should re-review the code after they have addressed your concerns.
-      - **Rejected :** The changes aren't acceptable. If you are voting this way, you should leave a comment in the pull request detailing why the changes were rejected.
+      - **Approve with suggestions :** 同意拉取请求，但提供可选的建议以改进代码.
+      - **Waiting for the author :** 要批准更改，并要求作者审阅评论。作者应该让你知道什么时候你应该在解决问题后重新审查代码.
+      - **Rejected :** 更改不可接受。如果您以这种方式进行投票，您应该在拉取请求中留下评论，详细说明更改被拒绝的原因.
 
     ![](images/72.png)
 
-1. Click **Complete** in the upper right of the pull request view.
+1. 点击拉取请求视图右上角的 **Complete** 
 
     ![](images/73.png)
 
-1. Enter the message used for the merge commit and update the pull request description as needed in the dialog that follows.
-    You can choose to squash merge your pull request and delete the source branch once the merge is complete.
+1. 输入用于合并提交的消息，并在随后的对话框中根据需要更新拉取请求描述.
+    您可以选择压缩合并您的拉取请求，并在合并完成后删除源分支.
 
-    {% include note.html content= "**Squash merging** is a merge option that allows you to condense the Git history of topic branches when you complete a pull request. Instead of each commit on the topic branch being added to the history of the default branch, a squash merge takes all the file changes and adds them to a single new commit on the default branch. Squash merging keeps your default branch histories clean and easy to follow without demanding any workflow changes on your team." %}
+    {% include note.html content= "**Squash merging** 是一个配置项，它允许您在完成拉取请求时压缩分支的Git历史记录，而不是将分支上的每个提交添加到主分支的历史记录中，压缩合并会将所有文件更改合并成一个提交到主分支中。压缩合并可让主分支历史保持整洁，易于查看和理解." %}
 
     ![](images/74.png)
 
-1. Click Complete merge. You should see a successful message as completed.
+1. 点击**Complete Merge**，应该会看到一个合并成功的消息.
 
     ![](images/75.png)
 
-1. Go back to your **Pull Requests** from the web, you should see completed pull request under **completed** tab.
+1. 返回 **Pull Requests** ，可以在 **completed** 选项卡中看到完成的拉取请求.
 
     ![](images/76.png)
 
-1. Open the file view and select the **master** branch \| **History** to make sure the changes have merged successfully.
+1. 打开文件视图并选择 **master** 分支 \| **History** 以确保已成功合并。
 
     ![](images/77.png)
 
-1. The master branch is updated successfully.
+1. Master主分支已经合并成功.
 
-## Exercise 7: Manage Repositories
+## 练习 7: 管理Git存储库
 
-Create Git repos in team projects to manage your project's source code. Each Git repo has its own set of permissions and branches to isolate itself from other work in your project.
+在团队项目中创建Git仓库以管理项目的源代码。每个Git仓库都有自己的权限和分支，使得不同项目的代码工作相互隔离开来
 
-### Task 1: Create a new repo from the web portal
+### 任务 1: 在VSTS项目中创建一个仓库
 
-1. Sign in to your **Visual Studio Team Services** account.
+1. 登陆到 **Visual Studio Team Services** 
 
-1. From your account overview page, select your team project. To find your team project, you can search as well.
+1. 在您的帐户概览页面中，选择您的团队项目。要找到您的团队项目，您也可以搜索.
 
    ![](images/78.png)
 
-1. Go to **Code** tab and select the drop-down next to the current repo name.
+1. 转到**Code**选项卡，选择Git存储库连接的下拉框.
 
    ![](images/79.png)
 
-1. Select **New Repository** to create one. In the Create a new repository window, verify that Git is the repo type and enter a name for your new repo.
+1. 点击 **New Repository** 创建Git存储库. 在新窗口中，确保选择的是Git存储库类型，并为新的Git存储库输入一个名称.
 
    ![](images/80.png)
 
-1. Click **Create**. A new empty Git repo is now created in your team project. You can select clone in your favorite IDE to connect the repo to your local
-   development environment, or connect to your new repo using the command line instructions provided.
+1. 点击 **Create**. 会在当前团队项目中创建一个新的空存储库. 可以使用自己喜欢的IDE来克隆Git仓库,也可以使用命令行工具来克隆Git仓库
 
    ![](images/81.png)
 
-1. Open up the Connect view in Team Explorer. Visual Studio will show all the existing repos in the Team Service project so you can choose whatever you want to clone.
+1. 在**Team Explorer**中打开连接视图。Visual Studio将显示团队服务项目中的所有现有Git存储库，以便您可以选择任何想要克隆的项目
 
    ![](images/82.png)
 
    ![](images/83.png)
 
-### Task 2: Delete a Git repo from your team project
+### 任务 2: 在团队项目中删除Git存储库
 
-Remove unused repos from your team project to organize your project's source code.
+从团队项目中删除未使用的存储库以组织项目的源代码
 
-1. Select the **gear icon** and navigate to **Version Control**.
+1. 点击 **gear icon** ，导航到 **Version Control**.
 
    ![](images/84.png)
 
-1. Choose the repository that you wish to remove and click on **...** to select **delete repository**.
+1. 选择想要删除的存储库，点击旁边的 **...** ,在弹出一菜单中点击 **delete repository**.
 
    ![](images/85.png)
 
-1. Confirm the removal of the repository by clicking on **Delete.**
+1. 点击 **Delete.** 以确认删除存储库
 
    ![](images/86.png)
 
-### Task 3: Renaming a Git repository in your team project
+### 任务 3: 在团队项目中更改Git存储库的名称
 
-1. Select the **gear icon** and navigate to **Version Control**.
+1. 选择 **gear icon** ,导航到 **Version Control**.
 
    ![](images/84.png)
 
-1. Choose the repository that you wish to rename and click on **...** to select **rename repository**.
+1. 选择想更新的的存储库，点击旁边的 **...** ,在弹出来的菜单中点击 **rename repository**.
 
    ![](images/87.png)
 
-1. Confirm the rename of the repository by clicking on **Rename.**
+1. 点击 **Rename.** 确认修改
 
    ![](images/87.png)
