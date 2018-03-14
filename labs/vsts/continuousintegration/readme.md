@@ -8,249 +8,244 @@ folder: /labs/vsts/continuousintegration/
 
 Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
-## Overview
+## 概述
 
-Continuous integration (CI) is the process of integrating your code into a shared repository as frequently as possible. During code integration, a build break or a test failure can inform you, in a timely manner, of an error in your code.
+持续集成（CI）是尽可能频繁地将代码集成到共享存储库的过程。 在代码集成过程中，自动化的生成可以实时显示生成中断信息或测试失败信息，并及时通知您代码中的错误。
 
-When many developers collaborate on complex software projects, it can be a long and unpredictable process to integrate different parts of code together. However, you can make this process more efficient and more reliable if you build and deploy your project continuously.
+当许多开发人员在复杂的软件项目上进行协作时，将不同部分的代码集成在一起可能是一个漫长且不可预测的过程。但是如果持续构建和部署项目，则可以使此过程更高效、更可靠。
 
-Visual Studio Team Services simplifies <a href="https://www.visualstudio.com/en-us/docs/build/overview/">Continuous integration</a> for your applications regardless of what platform you are targeting, or what language you are using. VSTS Team Build allows you to:
+Visual Studio Team Services简化了应用程序的 <a href="https://www.visualstudio.com/en-us/docs/build/overview/">持续集成</a> ，无论您的目标平台是什么，或者使用的是什么开发语言。VSTS 团队生成都可以让您：
 
-- Build on Linux, Mac, and Windows
+- 在Linux，Mac和Windows平台生生成应用
 
-- Use a private or a hosted (Azure) build agent
+- 使用私有或托管（Azure）的构建代理
 
-- Use multi-platform build agents for Android, iOS, Java, .NET, and other applications
+- 使用跨平台构建代理来生成Android，iOS，Java，.NET和其他应用程序
 
-- Seamless integration with work, test, code, build, and release
+- 将生成与工作，测试，代码和发布无缝集成
 
-- Track your builds with real-time build status
+- 通过实时生成状态跟踪您的代码质量
 
+## 必要条件
 
-## Pre-requisites
+为了完成这个实验，你需要- 
 
-In order to complete this lab you will need- 
+- **Visual Studio Team Services帐户**: 如果您没有，你可以从 [这里](https://www.visualstudio.com/){:target="_blank"} 注册。
 
-- **Visual Studio Team Services account**. If you don't have one, you can create from <a href="https://www.visualstudio.com/">here</a>
+- **Visual Studio 2017** 或更高版本
 
-- **Visual Studio 2017** or higher version
+- 您可以使用 **[VSTS Demo Data generator](http://vstsdemogenerator.azurewebsites.net/Environment/Create)** 在您指定的VSTS账户装创建一个包含初始化数据的样例团队项目。请使用 ***My Health Clinic*** 模板来完成手实验室。
 
-- You can use the **[Visual Studio team Services Demo Data generator](http://vstsdemogenerator.azurewebsites.net/Environment/Create)** to provision a project with pre-defined data on to your Visual Studio Team Services account. Please use the ***My Health Clinic*** template to follow the hands-on-labs.
+如果您未使用 VSTS Demo Data Generator，则可以从此 [GitHub repository](https://github.com/Microsoft/myhealthclinic2017) 克隆代码。
 
-If you are not using the VSTS Demo Data Generator, you can clone the code from this [GitHub repository](https://github.com/Microsoft/myhealthclinic2017)
+## 练习1：构建ASP.NET Core应用
 
+ASP.NET Core是一个用来构建Web或Cloud应用的精益且可组合框架。本练习将向您展示如何自动构建ASP.NET Core的HealthClinic应用程序。
 
-## Exercise 1: Build ASP.NET Core
+如果您使用 **demo generator** 创建了样例项目, 会自动为您创建生成定义. 您可以在不添加或修改生成任务的情况了解VSTS的整个自动化生成过程。当然您可以按照步骤创建一个新的生成定义。
 
-ASP.NET Core is a lean and composable framework for building web and cloud applications. Here we'll show you how to automatically build the **HealthClinic ASP.NET Core** application.
+### 任务1：创建新的生成定义
 
-If you have provisioned your project using the demo generator, the build definition should have been automatically created for you. You can follow the labs without adding or modifying the tasks to understand how a build pipeline works in VSTS. Otherwise, you can follow the steps to create a new one. 
+1. 在您的VSTS账户概述页面上，选择您的团队项目。
 
-### Task1 : Creating New Build Definition
+2. 点击 **Build and Release** 选项卡并选择 **Builds**。
 
-1. From your VSTS account overview page, select your team project. 
-
-2. Click **Build and Release** tab and select **Builds**.
-
-3. Click on **New** to create build definition.
+3. 点击 **New** 创建构建定义。
 
    <img src="images/1.png" width="624"/>
 
-4. You can start by selecting a template that will add a set of tasks and apply typical settings for the kind of app that you are building or start with an empty process and build from scratch. There is a template available for building ASP.NET Core apps. We will use that. Select  **ASP.NET Core**  and click apply to apply the template for the build definition 
+4. 您可以选择一个与您当前生成应用类型相匹配的预定义模板，或者创建一个空的定义从头配置生成定义。预定义模板中有一个可用于生成ASP.NET Core应用程序的模板。选择 **ASP.NET Core** 并单击 **Apply** 以应用该生成定义的模板
 
    <img src="images/3.png" width="624"/>
 
-5. As you can see, the template has applied a set of tasks that are typically involved in building an ASP.NET Core app. In many cases, you might not require to do anything further other than just pointing to the correct repo and branch and you will be good to go. In this case, you will need to make some customizations to the build. 
+5. 如您所见，该模板已添加了一组通常涉及生成ASP.NET Core应用程序的任务。在很多情况下，除了重新配置代码存储库以及分支之外，您可能不需要做任何其他事情。在本次练习中您需要对构建进行一些自定义。
 
-Select the **Process** task which states that some settings need attention.  You will need to select the build agent where you want to run this build. You can choose to run the builds on an-premise agent or use the agents hosted on Azure. We will use the **Hosted VS2017** agent as it has the .NET core framework and all other components that are required to build the app.
+选择  **Process** 这里有一些重要的配置。您需要选择要运行此生成的生成代理。您可以选择在预置代理上运行生成或使用托管在Azure上的代理。这里我们选择使用Hosted VS2017代理，因为它具有.NET核心框架以及生成应用程序所需的所有其他组件。
 
    <img src="images/4-1.png" width="624"/>
 
-Next select the **Get sources** task.  You can fetch your code from various source including ***GitHub, SVN, or any other Git repository*** but since you have our code in the VSTS project itself, select **This Project**. Change the repository and branch if it is not already pointing to the correct ones.
+然后选择 **Get sources** 任务。您可以从包括 **GitHub，SVN或任何其他Git存储库的各种源** 获取您的代码，但由于您在VSTS项目本身中有到导入的样例代码，请选择 **This Project**。如果 **Repository** 和 **Branch** 尚未指向正确的存储库和分支，请按下图设置更改。
 
    <img src="images/4.png" width="624"/>
 
-6. The next tasks **Restore** needs no change. Leave it as it is. 
+6. 接下来的  **Restore** 任务不需要更改，保持原状。
 
-7. Save the build definition.
+7. 保存生成定义。
 
-8. Rename the build definition by clicking on the name and then changing it to **MHC.Web.CI**. Then save the build definition again. 
+8. 通过单击名称，然后将生成定义重命名为 **MHC.Web.CI**，再次保存生成定义。
 
 <img src="images/5-1.png" width="624"/>
 
-The My Health Clinic web application depends on node components and additional libraries. You will need to add tasks to download and install these packages before it can be built. We will see how to add tasks to our build definition in the next task.
+The My Health Clinic Web应用程序依赖于节点组件和附加库。您需要添加任务才能下载和安装这些软件包，然后才能生成应用。我们将看到如何在下一个任务中将其他任务添加到我们的生成定义中。
 
-### Task 2: Adding Build Tasks
+### 任务2：添加生成任务
 
-1. Select **Add Task** and then select **Package** to find tasks relating to the category. Select **npm** and click **Add**. Place it after the **Build** task. You can drag and drop tasks to reorder them.
+1. 选择添加 **Add Task**，然后选择 **Package** 来查找与该类别相关的任务。选择 **npm** 并单击 **Add**。将它放在 **Build** 任务之后。您可以拖放任务以对其重新排序。
 
     <img src="images/5.png" />
 
 2. Change the *working folder* to ***src/MyHealth.Web***. The project has the json file which the npm install command will require to know what packages needs to be installed.
+将 **working folder** 更改为 **src/MyHealth.Web**。样例应用包含说明需要安装哪些软件包的json文件，npm install命令会根据这个文件安装依赖。 
+
     <img src="images/6.png" width="624"/>
   
-    >  Next, you will need to run *bower* to install the web packages. You can run bower commands using the **Command Line/Shell Script** utility but a better way to do that would be is to use the **Bower** task. This task is not out-of-the-box and needs to be installed from the Marketplace.
+    >  接下来，您需要运行 **bower** 来安装Web包。您可以使用 **Command Line/Shell Script** 任务运行bower命令，但更好的方法是使用 **Bower** 任务。此任务不是开箱即用的，需要从 **Marketplace** 中安装。
     
-If you didn't install Bower when using the VSTS Demo Generator then from an another tab, navigate to the <a target ="blank" href="https://marketplace.visualstudio.com/items?itemName=touchify.vsts-bower">Bower extension page</a> on the Marketplace and install it. Close the tab when you are done to return back to the tab where you are editing the build definition. 
+如果您在使用 **VSTS Demo Generator** 时没有安装Bower，则可以从另一个选项卡导航到 **Marketplace** 上的<a target ="blank" href="https://marketplace.visualstudio.com/items?itemName=touchify.vsts-bower">Bower扩展页面</a>并安装它。完成后关闭选项卡，返回到编辑生成定义的选项卡。
 
-3. Save the build definition and refresh the page. You should see the **Bower** task under the *Package* tab. Select the task and click **Add**
+3. 保存生成定义并刷新页面。您应该在 **Package** 选项卡下看到 **Bower** 任务。选择任务并单击 **Add**。
 
     <img src="images/7.png" />
 
-4. Select the **Bower** task and change the *Bower JSON Path* to point to the *bower.json* file under the MyHealth.Web folder
+4. 选择**Bower**任务并更改 **Bower JSON Path** 路径以指向MyHealth.Web文件夹下的 **bower.json** 文件。
 
     <img src="images/8.png" />
 
-5. Next you will need the **gulp** task. Gulp can carry out tasks such as compressing files. Select **Add Task** and look for the **Gulp from the **Build** section. Add that to the build definition. 
+5. 接下来，您将需要 **gulp** 任务。Gulp可以执行压缩文件等任务。点击 **Add Task**，在添加任务界面的 **Build** 分类下选择 **Gulp**。将其添加到生成定义。
 
     <img src="images/8-1.png"/>
 
-6. Change the *Gulp file path* to point to the gulp file under the MyHealth.Web folder
+6. 将**Gulp file path**更改为指向MyHealth.Web文件夹下的gulp文件
 
     <img src="images/9.png"/>
 
-7. The rest of the tasks do not need any change. You are ready to run the build. You can make the builds to run as a *Continuous Integration* build so that it runs upon every check-in on the branch. We will see that later in the lab. For now, we will run it manually.
+7. 其余任务不需要任何改变。您已准备好运行生成。当前生成可以以 **Continuous Integration** 的形式运行，以便它在分支上的每次提交时被触发并运行。我们稍后会在实验室中看到。现在，我们将手动运行它。
 
-8. Select **Save & queue** to save the build definition and queue the build immediately. If you have already saved the build definition, select **Queue** from the menu
+8. 选择 **Save & queue** 保存生成定义并立即对生成进行排队。如果您已保存生成定义，请从菜单中选择 **Queue**。
 
     <img src="images/14.png" width="624"/>
          
-9. You will see the build waiting to find an agent to run. It may take a couple of minutes and it once gets an agent, the build starts executing. You can see the output logs in real-time as the build is running. You can also download the log later should you need to a deeper analysis.
+9. 您将看到生成会先等待找到要运行的代理。这可能需要几分钟的时间，当生成一旦获得代理，生成便开始执行。您可以在生成运行时实时查看输出日志。如果需要更深入的分析生成过程，您也可以稍后下载生成日志。
 
     <img src="images/18.png"/>
 
-10. Once all the steps are completed, you can select the *Build number* on the top to get the detailed information on the run. The **Summary** tab shows the summary of the run including the who triggered it, at what time, what code and commit was fetched, associated work items, tests, etc., 
+10. 完成所有步骤后，您可以选择顶部的 **Build number** 以获取有关运行的详细信息。 **Summary** 选项卡显示运行摘要，包括谁触发了它，在什么时候提取了哪些代码和提交，关联的工作项，测试等信息。
 
     <img src="images/19.png"/>
 
-11. The **Timeline** view will help you find out how much time did every task to run. If the build definition included publish task and if any files were published, you can find it from the **Artifacts** tab.
+11. **Timeline** 视图将帮助你找出每个任务的运行时长。如果构建定义包含发布任务，并且发布了文件，您可以从 **Artifacts** 选项卡中找到它。
    
        <img src="images/20.png"/>
 
-We will now see how you can deal with variables, setup different trigger mechanisms, etc on the build. 
+现在我们将看到如何在生成定义中处理变量，设置不同的触发机制等。
 
-## Exercise 2: Defining attributes for the build definition
+## 练习2：定义生成定义的属性
 
-1. Go to your **Build** from your VSTS account.
+1. 从您的VSTS帐户转到您的 **Build** 页面。
 
-2. Edit the build definition and click on **Options**.
+2. 编辑构建定义并单击**Options**。
 
    <img src="images/21.png" width="624"/>
 
-   > **Description:** If you specify a description here, it is shown near the name of the build definition when you select it in the Build area of your team project.
+   > **Description:** 如果您在此处指定描述，那么当您在团队项目的**Build**区域中选择它时，它将显示在生成定义的名称附近。
 
-   > **Build number format:** If you leave it blank, your completed build is given a unique integer as its name. But you can give completed builds much more useful names that are meaningful to your team. You can use a combination of tokens, variables, and underscore characters.
+   > **Build number format:** 如果将其保留为空，则完成的内部版本将被赋予一个唯一的整数作为其名称。但是你可以为生成指定更多有用的名称信息，这对你的团队来说很有意义。您可以使用组合令牌、变量、下划线以及字符的组合。
 
-   > **Default agent queue:** Select the queue that's attached to the pool that contains the agents you want to run this definition.
-   To build your code or deploy your software you need at least one agent, and as you add more code and people, you'll eventually need more.
+   > **Default agent queue:** 选择运行此定义的代理池的队列。要构建代码或部署软件，您至少需要一个代理。在项目代码和人员不断增加时，您可能还需要更多代理。
 
-   > **Build job authorization scope:** Specify the authorization scope for a build job.
-    **Project Collection**, if the build needs access to multiple team projects.
+   > **Build job authorization scope:** 指定生成作业的授权范围。 **Project Collection**：如果构建需要访问多个团队项目请指定为 **Project Collection**。
 
-   > **Demands:** Use demands to make sure that the capabilities your build needs are present on the build agents that run it. Demands are asserted automatically by build steps or manually by you.
+   > **Demands:** 使用需求来确保生成需要的功能存在于运行它的构建代理上。需求由构建步骤自动声明或由您手动声明。通过此设置也能做到指定代理运行生成的目的。
 
-3. Click on **Triggers**. On the Triggers tab you specify the events that will trigger the build. You can use the same build definition for both CI and Scheduled builds.
+3. 点击**Triggers**。在**Triggers**选项卡上，指定如何触发生成。您可以对同一个生成同时设置**CI**和**Scheduled**。
 
-   > **Continuous integration (CI):** Select this trigger if you want the build to run whenever someone checks in code.
+   > **Continuous integration (CI):** 如果您希望每次签入代码时运行生成，请选择此触发器。
 
-   > **Batch changes:** Select this check box if you have a lot of team members uploading changes often and you want to reduce the number of builds you are running. If you select this option, when a build is running, the system waits until the build is completed and then queues another build of all changes that have not yet been built. If you are using batched changes, you can also specify a maximum number of concurrent builds per branch.
+   > **Batch changes:** 如果您有许多团队成员经常推送提交，并希望减少正在运行的生成数量，请选中此复选框。如果勾选此选项，则在生成运行时有人提交代码，系统会等待构建完成，然后将尚未构建的所有更改的在下次生成中统一编译。
 
-   > **Branch filters:** You can specify the branches where you want to trigger builds. You can use wildcard characters.
+   > **Branch filters:** 您可以指定要触发构建的分支，也可以使用通配符。
 
-   > **Path filters:** You can also specify path filters to reduce the set of files that you want to trigger a build.
+   > **Path filters:** 您还可以指定在指定分支的目录下的文件被修改时触发生成，也可以排除指定目录的文件修改时触发生成。
 
    <img src="images/22.png" width="624"/>
 
-4. Click on **Scheduled**. Select the days and time when you want to run the build and configure accordingly.
+4. 点击 **Scheduled**。选择要运行生成的日期和时间并进行相应配置。
 
    <img src="images/23.png" width="624"/>
    
-5. Click on the **Retention** tab. In most cases you don't need completed builds longer than a certain number of days. Your retention policies automatically delete old completed builds to minimize clutter.
-   You modify these policies on the Retention tab of your build definition.
+5. 点击 **Retention** 标签。在大多数情况下，您不需要保留的生成超过保留策略的天数，系统会自动删除旧的完成版本，使得生成结果列表更精简。
 
-6. Click on the **Variables** tab. We can add new user-defined variables.
+您可以在生成定义的 **Retention**选项卡上修改这些策略。
+
+6. 点击 **Variables** 选项卡。我们可以添加新的用户自定义变量。
 
    > - BuildConfiguration: release 
    > - BuildPlatform: any cpu
    > - WebDir: src/MyHealth.Web
-   > **Secret Variables:** We recommend that you make the variable **Secret** if it contains a password, keys, or some other kind of data that you need to avoid exposing.
+   > **Secret Variables:** 如果包含密码，密钥或其他需要避免暴露的其他类型数据，我们建议您创建 **Secret** 变量。
 
    <img src="images/24.png" width="624"/>
 
-7. Now, modify the build steps to use the new variables. Click on the **npm** task and use the **WebDir** variable in the working directory property.
+7. 现在修改生成步骤以使用自定义变量。在**npm**任务的工作目录属性中使用**WebDir**变量。
 
    <img src="images/26.png" width="624"/>
 
-8. Save the build.
+8. 保存构建。
 
-## Exercise 3: Working with Artifacts
+## 练习3：使用 Artifacts
 
-An artifact is a deployable component of your application. Visual Studio Team Services has the ability to explicitly manage the content of artifacts during a build. 
+**Artifacts**是应用程序的可部署组件。Visual Studio Team Services能够在构建期间自行配置**Artifacts**的内容。
 
-1.  Go to the build definition and select the **Publish** task. Note that the task has two properties:
-    * **Publish Web Projects** - When selected, the task will try to find the web projects in the repo and run publish command on them. A presence of *wwconfig* file or *wwwroot* folder is used to identify web projects
-    * **Zip Published Projects** - When this option is selected, the folder created by the publish command is zipped
+1.  转到生成定义并选择 **Publish** 任务。请注意，该任务有两个属性：
+
+    * **Publish Web Projects** - 选中此项后，任务将尝试查找代码存储库中的Web项目并运行publish命令。*wwconfig**文件或**wwwroot**文件夹是用来标识Web项目。
+    * **Zip Published Projects** - 择此选项后，由publish命令创建的文件夹将被压缩
 
     <img src="images/33.png" width="624"/>
 
-2. Save and queue the  build. Once the build is completed, go to the build summary and select the **Artifacts** tab. Select the **Explore** button to view the published artifacts
+2. 保存并排队生成。生成完成后，转至生成摘要页面并选择 **Artifacts** 选项卡。点击**Explore**按钮以查看已发布的工件
 
    <img src="images/34.png" width="624"/>
 
-3. Expand the drop folder and you should see **MyHealth.Web.zip** file created in the folder
+3. 展开drop文件夹，您应该看到文件夹中创建的 **MyHealth.Web.zip** 文件 
    <img src="images/35.png" />
 
-4. We will need the zip file for deployment. We will cover that in the ***Continious Delivery*** lab
+4. zip文件需要用于部署。我们将在 ***Continious Delivery*** 实验室中介绍
    
 
-## Exercise 4: Running Tests with Build
+## 练习4：在生成中运行测试
 
-It's always a good practice to run tests with your build to verify the integration. 
+在生成中运行测试是验证代码集成质量的最佳实践。
 
-The ***MyHealth.API.IntegrationTests*** project contains the unit tests. 
+样例代码***MyHealth.API.IntegrationTests***项目包含单元测试。
 
 <img src="images/36.png" />
 
-If you open the My Health Clinic solution in Visual Studio, you will see the following test cases in the "Test Explorer" window.
+如果您在Visual Studio中打开**My Health Clinic**解决方案，则会在**Test Explorer**窗口中看到以下测试用例。
 
 <img src="images/37.png" />
 
 The **Test** task that we have in the build defintion will need to be modified to point to the test projects in the repository. 
+我们在生成定义中的 **Test** 任务将需要修改以指向存储库中的测试项目。
 
-1. Go to your build definition and select edit. 
+1. 跳转到您的构建定义并选择编辑。
 
-2. Select the **Process** task. Change the *Project(s) to test* parameter as follows:
+2. 选择 **Process** 任务。将项目更改为**Project(s) to test**，任务参数如下所示：
     * **ProjectS) to test**: test/MyHealth.API.IntegrationTests/*.csproj
 
    <img src="images/38-1.png" width="624"/>
 
-3. Select the **Test** task. Change the *Arguments* parameter as follows:
+3. 选择 **Test** 任务,更改**Arguments**中的参数，如下所示：
     * **Arguments**: --configuration $(BuildConfiguration) --logger "trx;LogFileName=TestResults.xml"
 
    <img src="images/38.png" width="624"/>
 
-4. We will use the **Publish Test Result** task to publish the results of the tests to the Build summary section. Add the task and change the parameters as follows:
+4. 我们将使用**Publish Test Result**任务将测试结果发布到**生成摘要**部分。添加任务并更改参数，如下所示：
     - Test Result Format: VSTest
     - Test Results Files: **/TestResults.xml
-    - Always run: true - to be sure that the results are published when the unit tests fail.
+    - Always run: true - 确保在单元测试失败时发布结果。
    <img src="images/40.png" width="624"/>
    <img src="images/40-1.png" width="624"/>
 
-5. Save the build and queue.
+5. 保存生成定义并排队。
 
-6. You should see the build summary showing along with Test results.
+6. You should see the build summary showing along with Test results.您应该看到在生成摘要上显示的测试结果。
 
    <img src="images/41.png" width="624"/> 
 
 7. Click on **Test** to view detailed summary of Test Results. Make sure that you selected *All* for the **Outcome** filter
+点击 **Test** 查看测试结果的详细摘要。确保您在**Outcome**筛选器上选择了**All**。
 
    <img src="images/42.png" width="624"/>
 
-8. We now have an automated CI build with automated tests that wil run every time a change is committed and verify the changes are not breaking the code. The next lab will cover **Continuous Delivery (CD)** - the ability to release frequently and consistently into various environments including dev, staging, production.
-   
-
-
-
-
-
-   
+8. 我们现在有一个自动持续集成生成，其自动化测试将在每次提交更改时运行并验证更改不会产生Bug。下一个实验将涵盖 **Continuous Delivery (CD)** - 能够持续地将应用发布到各种环境中，包括开发，临时，生产。
