@@ -1,5 +1,5 @@
 ---
-title: Continuous Deployment using Visual Studio Team Services
+title: 使用Visual Studio 团队服务进行连续部署
 layout: page
 sidebar: vsts
 permalink: /labs/vsts/continuousdeployment/
@@ -8,325 +8,327 @@ folder: /labs/vsts/continuousdeployment/
 
 Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
-## Overview
+##概述
 
-[Release Management](https://www.visualstudio.com/en-us/docs/release/overview/) is a service in Visual Studio Team Services that helps you automate the deployment and testing of your software in multiple environments. Using Release Management, you can either fully automate the delivery of your software all the way to production, or set up semi-automated processes with approvals and on-demand deployments. It is an essential element of DevOps that helps your team continuously deliver software to your customers at a faster pace and with lower risk.
+[发布管理](https://www.visualstudio.com/en-us/docs/release/overview/) 是Visual Studio 团队服务中的一项服务，可帮助您在多个环境中自动部署和测试您的软件。使用发布管理，您可以完全自动化将软件交付到生产环境，或者通过人工审核和按需部署来设置半自动化流程。这是DevOps的一个重要组成部分，可帮助您的团队以更快的速度和更低的风险持续地向客户交付软件。
 
-Release Management can be used by all kinds of software developers for continuous automated deployment, or by large enterprises to improve efficiency and collaboration between various teams that participate in release processes.
+发布管理可供软件开发人员用于持续自动化部署，或者是在大型企业中，用于提升参与发布过程的各团队间的效率和协作。
 
-To use Release Management, you create release definitions, in which you specify the automation tasks that should be run in each environment. These automation tasks can be to deploy your software and to run tests against it. You can group multiple environments in each definition to model your software lifecycle. You can then set up the deployment in each environment to be automatically triggered upon completion of a build, at scheduled times, or on successful deployment to a previous environment.
+要使用发布管理，您可以创建发布定义，在其中指定应在每个环境中运行的自动化任务。这些自动化任务可以部署您的软件并运行测试任务。您可以将每个定义中的多个环境分组来模拟软件生命周期。然后，您可以在每个环境中设置部署，以便在构建完成后，在特定时间或成功部署前置环境时自动触发。
 
-## Pre-requisites
+##先决条件
 
-In order to complete this lab you will need-
+为了完成这个实验，你需要 - 
 
-- **Visual Studio Team Services account**. If you don't have one, you can create from [here](https://www.visualstudio.com/)
+- **Visual Studio 团队服务帐户**。如果你没有，你可以从这里 [创建](https://www.visualstudio.com/) 
 
-- **Visual Studio 2017** or higher version
+- **Visual Studio 2017**或更高版本
 
-- You can use the **[VSTS Demo Data generator](http://vstsdemogenerator.azurewebsites.net/Environment/Create)** to provison a project with pre-defined data on to your Visual Studio Team Services account. Please use the ***My Health Clinic*** template to follow the hands-on-labs.
+- 您可以使用**[VSTS演示数据生成器](http://vstsdemogenerator.azurewebsites.net/Environment/Create)**向您的Visual Studio 团队服务帐户提供预定义数据的项目。请使用*** My Health Clinic***模板来关注动手实验室。
 
-- If you are not using the VSTS Demo Data Generator, you can clone the code from here
+- 如果您未使用VSTS Demo 生成器，则可以从这里克隆代码
 
-## Exercise 1: Connect To Microsoft Azure
+## 练习1: 连接到Microsoft Azure
 
-1. Sign in to your Visual Studio Team Services account.
+1.登录到您的Visual Studio 团队服务帐户。
 
-1. From your account overview page, select your team project. To find your team project, use can search as well.
+1.在您的账户概览页面中，选择您的团队项目。要找到您的团队项目，也可以使用搜索功能。
 
-    ![](images/1.png) 
+   ![](images/1.png) 
 
-1. Choose the **gear icon** to open the administrative control panel.
+1.选择**齿轮图标**打开管理控制面板。
 
-    ![](images/2.png) 
+   ![](images/2.png)  
 
-1. Go to **Services** and click on **New Service Endpoint** to add one.
+1.转到**服务**，然后单击**新服务端点**添加一个。
 
-    ![](images/3.png) 
+   ![](images/3.png)  
 
-1. From the drop down, select **Azure Resource Manager**.
+1.从下拉菜单中选择**Azure资源管理器**。
 
-    ![](images/4.png)
+   ![](images/4.png)
 
-1. Provide a Connection name **MHC-Azure** and select the subscription.
+1.提供连接名称**MHC-Azure**并选择订阅。
 
-    ![](images/5.png)
+   ![](images/5.png) 
 
-## Exercise 2: Creating Release Definitions
+## 练习2: 创建发布定义
 
-1. Go to your **Release** tab from your VSTS account.
+1.从您的VSTS帐户转到您的**Release**选项卡。
 
-    ![](images/7.png)
+   ![](images/7.png) 
 
-1. Click on **+** to create a new release definition.
+1.点击**+**创建新的发布定义。
 
-    ![](images/8.png)
+   ![](images/8.png) 
 
-1. In the Create new release definition dialog, select the **Azure App Service Deployment** template and choose **Next.**
+1.在创建新的发布定义对话框中，选择**Azure App Service Deployment**模板并选择**Next。**
 
-    ![](images/9.png)
+   ![](images/9.png) 
 
-1. In the next page, select the **build definition** you created earlier and choose **Create.**
+1.在下一页中，选择您之前创建的**构建定义**并选择**创建。**
 
-    ![](images/10.png)
+   ![](images/10.png) 
 
-1. This creates a new release definition with one default environment. Rename the Environment to **Dev**.
+1.这将创建一个具有一个默认环境的新的发布定义。将环境重命名为**Dev**。
 
-    ![](images/11.png)
+   ![](images/11.png) 
 
-1. In the **Azure Subscription**, map the endpoint which we created in **Exercise 1**.
+1.在**Azure Subscription**中，映射我们在**练习1**中创建的端点。
 
-    ![](images/12.png)
+   ![](images/12.png) 
 
-1. If you would have hosted the WebApp on Azure, you will get an App Service which has to be mapped in your release definition. If you haven't published on Azure, you can follow this [post](https://almvm.azurewebsites.net/labs/vsts/appservice/) to host.
+1.如果您将在Azure上托管WebApp，则将获得必须映射到您的发布定义中的应用程序服务。如果您尚未在Azure上发布，则可以参照 [这份文档](https://almvm.azurewebsites.net/labs/vsts/appservice/) 进行托管。
 
-    ![](images/13.png)
+   ![](images/13.png) 
 
-1. Select the **MyHealth.Web.zip** file to deploy.
+1.选择要部署的**MyHealth.Web.zip**文件。
 
-    ![](images/14.png)
+   ![](images/14.png) 
 
-1. We will replace the database connection string in the **appsettings.json** to point to a database server on Azure.
+1.我们将替换**appsettings.json**中的数据库连接字符串以指向Azure上的数据库服务器。
 
-   ![](images/48.png)
+   ![](images/48.png) 
 
-1. Go to **Variables** tab and create a variable with the below name and value.
+1.转到**Variables**选项卡，并使用下面的名称和值创建一个变量。
 
-    {% include note.html content= "You will need to create a SQL database server on Azure prior to this step. If you have an existing SQL Server on Azure, you can use it, Otherwise follow this [blog post](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) for step-by-step intsructions." %}
+    {% include note.html content ="在此步骤之前，您需要在Azure上创建SQL数据库服务器，如果您在Azure上有现有的SQL Server，则可以使用它，否则请按照[博客文章](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) 以进行逐步取消。" %}
 
-    - Name: ConnectionStrings.DefaultConnection
+    - 名称: ConnectionStrings.DefaultConnection
 
-    - Value: Server=tcp:{yourdbserver},1433;Database=myhealthclinic;User ID={dbuserid};Password={dbpassword};Trusted_Connection=False;Encrypt=True;
+    -  值: Server = tcp: {yourdbserver}，1433; Database = myhealthclinic; User ID = {dbuserid}; Password = {dbpassword}; Trusted_Connection = False; Encrypt = True;
 
-1. Give a name for the new release definition and Save the release definition.
+1.为新的发布定义命名并保存版本定义。
 
-1. Create a **new release** and select the **latest** build to deploy it to the single environment in the definition.
+1.创建一个**新发布定义**并选择**latest**版本将其部署到定义中的单个环境中。
 
-    ![](images/15.png)
+   ![](images/15.png) 
 
-    ![](images/16.png)
+   ![](images/16.png) 
 
-1. Go to the release definition log to view the process.
+1.转到发布定义日志以查看过程。
 
-    ![](images/17.png)
+   ![](images/17.png) 
 
-    ![](images/18.png)
+   ![](images/18.png) 
 
-1. You can go to the Azure Portal and get the existing Web App Service URI.
+1.您可以转到Azure门户并获取现有的Web App Service URI。
 
-    ![](images/19.png)
+   ![](images/19.png) 
 
-1. Click on **Private area** to login.
-    - Username: User
-    - Password: P2ssw0rd@1
+1.点击**Private Area**登录。
 
-    ![](images/20.png)
+    - 用户名: 用户
+    - 密码: P2ssw0rd@1
 
-    ![](images/21.png)
+   ![](images/20.png) 
 
-1. Once logged in, you should see this dashboard.
+   ![](images/21.png) 
 
-    ![](images/22.png)
+1.登录后，您应该看到这个仪表板。
 
-## Exercise 3: Manage Releases
+   ![](images/22.png) 
 
-### Task 1: Triggers
+## 练习3: 管理发布
 
-1. Return to the **Pipeline** view of the release by selecting Releases, then your Release definition, then Edit.
+### 任务1: 触发器
 
-   ![](images/23.png)
+1.选择发布，然后选择发布定义，然后选择编辑，返回到发布的**管道**视图。
 
-   - **Manual:** No releases are initiated automatically when a new build of the source artifacts occurs. All releases for this release definition must be created manually by choosing the Release icon in a release definition or from a build summary.
+   ![](images/23.png) 
 
-   - **Continuous Deployment:** A new release is created automatically when Release Management detects new built artifacts are available. When you select this option, a drop-down list enables you to select which of the artifact sources linked to this release definition will trigger a new release.
+   - **手动: **当源代码的构建完成后，不会自动触发部署。此发布定义的部署任务需要手动操作才会触发。
 
-   - **Scheduled:** A new release is created based on a schedule you specify. When you select this option, a set of controls enables you to select the days of the week and the time of day that Release Management will automatically create a new release.
+   - **持续部署: **发布管理检测到新的构建工件可用时，会自动触发此发布，执行部署任务。选择此选项时，通过下拉列表可以选择链接到此发布的构建，部署包将从关联的构建结果中获取
 
-   {% include note.html content= "However, even though a release is automatically created, it might not be deployed automatically to an environment. To enable automatic deployment, you must also configure environment deployment triggers in each environment for which you want automated deployments to occur. The lower section of the Triggers tab lists the environments configured for this release definition." %}
+   - **定时计划(Scheduled): **根据配置的时间触发部署任务。当您选择此选项时，您可以使用一组时间相关的控件来选择一周中的某天、某天的某个时间来触发部署任务
 
-   > - **Continuous Deployment:** A new release is created automatically when Release Management detects new built artifacts are available. When you select this option, a drop-down list enables you to select which of the artifact sources linked to this release definition will trigger a new release.
+   {% include note.html content ="但是，即使配置好了自动触发部署任务，它也可能不会自动部署到环境中。要启用自动部署，还必须在每个需要自动部署的环境中配置环境部署触发器触发器"选项卡的下半部分列出为此版本定义配置的环境。" %}
 
-   ![](images/24.png)
-   > - **Scheduled:** A new release is created based on a schedule you specify. When you select this option, a set of controls enables you to select the days of the week and the time of day that Release Management will automatically create a new release.
+   >  - **持续部署: **发布管理检测到新的构建工件可用时，会自动创建新发布定义。选择此选项时，通过下拉列表可以选择链接到此版本定义的工件源中的哪一个将触发新发布定义。
 
-   > **NOTE:** However, even though a release is automatically created, it might not be deployed automatically to an environment. To enable automatic deployment, you must also configure environment deployment triggers in each environment for which you want automated deployments to occur.
+   ![](images/24.png) 
+   >  - **定时计划: **根据您指定的定时计划触发部署任务。当您选择此选项时，您可以使用一组控件选择一周中的某几天以及发布管理将自动创建新发布定义的时间。
 
-    {% include important.html content= "The deployment conditions dialog for the environment shows the currently configured environment deployment triggers and deployment queuing policies. Users with permission to edit release definitions can edit the deployment conditions here, including environment deployment triggers and deployment queuing policies." %}
+   >**注意: **尽管配置了自动触发了发布的部署任务，它也可能不会自动部署到环境中。要启用自动部署，还必须在要为其进行自动部署的每个环境中配置环境部署触发器。
 
-   ![](images/25.png)
-2. In the **Pipeline** tab, select the icon of a person at either end of the environment for pre and post deployment conditions.
+    {% include important.html content ="环境的部署条件对话框显示当前配置的环境部署触发器和部署排队策略。具有编辑发布定义权限的用户可以在此编辑部署条件，包括环境部署触发器和部署排队策略"。%}
 
-    > The deployment conditions for the environment shows the currently configured environment deployment triggers and deployment queuing policies. Users with permission to edit release definitions can edit the deployment conditions here.
-    Read more in the <a href=https://docs.microsoft.com/en-us/vsts/build-release/concepts/definitions/release/triggers >Deployment Trigger documentation<a/>.
+   ![](images/25.png) 
+
+2.在**Pipeline**选项卡中，选择环境任一端的人员图标，以查看和配置部署前和部署后的条件。
+
+    >环境的部署条件显示当前配置的环境部署触发器和部署排队策略。具有编辑版本定义权限的用户可以在此处编辑部署条件。
+    请阅读<a href=https://docs.microsoft.com/en-us/vsts/build-release/concepts/definitions/release/triggers>部署触发器文档<a/>。
     
-    <img src="images/23-4.png" width="624"/>
-    <img src="images/23-5.png" width="400"/>
+    <img src ="images/23-4.png" width ="624"/ >
+    <img src ="images/23-5.png" width ="400"/ >
 
-### Task 2: Artifacts
+### 任务2: 工件（Artifacts）
 
-An artifact is a deployable component of your application. Team Services has the ability to explicitly manage the content of artifacts during a build.
+工件是应用程序的可部署组件。团队服务能够在构建期间显式管理工件的内容。
 
-1. Click on **Artifacts** tab from your release definition.
+1.点击发布定义中的**Artifacts**选项卡。
 
-   {% include important.html content= "
-   1. When authoring a release definition, you link the appropriate artifact sources to your release definition. For example, you might link a release definition to a Team Build build definition, or to a Jenkins project.
-   2. When creating a release, you specify the exact version of these artifact sources; for example, the number of a build coming from Team Build, or the version of a build coming from a Jenkins project.
-   3. After a release is created, you cannot change these versions. A release is fundamentally defined by the versioned artifacts that make up the release. As you deploy the release to various environments, you will be deploying and validating the same artifacts in all environments." %}
+   {% include important.html content ="
+   1.配置发布定义时，将适当的工件源链接到发布定义。例如，您可以将发布定义链接到Team Build构建定义或Jenkins项目。
+   2.创建发布时，请指定这些工件源的确切版本; 例如，来自Team Build的构建编号，或者来自Jenkins项目的构建版本。
+   3.发布版本创建后，您无法更改构建的版本。每次的发布从根本上来说，是由某个版本的工件（部署包）构成的。在执行发布的部署任务到各个环境时，各个环境都将验证和部署同一个工件（部署包）"%}
 
-   ![](images/26.png)
+   ![](images/26.png) 
 
-2. Click **Link an artifact source** and fill the required details.
+2.单击**链接工件来源**并填写所需的详细信息。
 
-   - Type: Specify the build artifact that you are referring from.
+   - 类型: 指定您引用的构建工件。
 
-   - Project: The project that you are interested to deploy.
+   - 项目: 要部署的项目。
 
-   - Source(Build Definition): The build definition that you wish to deploy. Select the created build from our Continuous Integration exercise.
-   - Default Version: Select the latest.
+   - 构建来源 : 您希望部署的构建定义。选择在持续集成练习中创建的构建。
+   - 默认版本: 选择最近的。
 
-   {% include important.html content= "
-   1. A single release definition can be linked to multiple artifact sources. In this case, when you create a release, you specify individual versions for each of these sources.
-   2. You can link multiple artifact sources to the same release definition. A common example for this is when you deploy micro services, each one coming from a different build definition. Another example is where you manage the application code in one repository and the configuration files in a different repository." %}
+   {% include important.html content ="
+   1.单个发布定义可以链接到多个工件来源。在这种情况下，当您创建发布时，可以为每个来源指定单独的版本。
+   2.您可以将多个工件源链接到相同的发布定义。一个常见的例子就是当你部署微服务时，每个服务都来自不同的构建定义。另一个例子是您在一个存储库中管理应用程序代码并在另一个存储库中管理配置文件的位置。"%}
 
-   {% include note.html content= "At present, Release Management can trigger creation of new releases from only one of the artifact sources. When a new release is created, the latest versions of all the other sources are deployed." %}
+   {% include note.html content ="目前，某个发布定义只能通过一个工件源来触发，但发布被触发后，会发布定义中的所有工件都会被部署到环境中。" %}
 
-   ![](images/27.png)
+   ![](images/27.png) 
 
-### Task 3: Variables
+### 任务3: 变量
 
-You can use the default variables, and define custom variables, that enable you to:
+您可以使用默认变量，也可以自行定义变量：
 
-- Share values across all of the environments with release definition variables. Choose a release definition variable when you need to use the same value across all the environments and tasks in the release definition, and you want to be able to change the value in a single place.
-- Share values across all of the tasks within one specific environment with environment variables. Use an environment-level variable for values that vary from environment to environment (and are the same for all the tasks in an environment).
-- Run your deployments in debug mode to show additional information that can help you resolve issues and failures.
+- 在发布定义中变量在所有环境中共享值。当需要在发布定义中的所有环境和任务中使用相同的值时，选择发布定义变量，并且希望能够在单个位置更改值。
+- 使用环境变量在一个特定环境中分享所有任务的值。对环境不同的值使用环境级变量(并且对于环境中的所有任务都是相同的) 。
+- 以调试模式运行您的部署，以显示可帮助您解决问题和失败的其他信息。
 
-1. Click on **Variables** tab from your release definition.
+1.点击发布定义中的**Variables**标签。
 
-   ![](images/28.png)
+   ![](images/28.png) 
 
-1. Using variables at both release definition and environment scope helps you to:
+1.在发布定义和环境范围中使用变量可帮助您: 
 
-   - Avoid duplication of values, making it easier to update all occurrences as one operation.
-   - Store sensitive values in a way that they cannot be seen or changed by users of the release definitions.
+   - 避免重复值，使得更容易将所有事件更新为一个操作。
+   - 存储敏感值的方式不能被发布定义的用户看到或更改。
 
-1. Click **Enviroment variables**. You can view and edit the variables defined for individual environments in the release definition in this tab by selecting Environment variables from the list at the right of the toolbar.
+1.单击**Enviroment变量**。您可以通过从工具栏右侧的列表中选择环境变量来查看和编辑在此选项卡中的版本定义中为各个环境定义的变量。
 
-   ![](images/29.png)
+   ![](images/29.png) 
 
-1. Go back to your environments and select **...**. Click on **configure variables**.
+1.返回到您的环境并选择**...**。点击**配置变量**。
 
-   ![](images/30.png)
+   ![](images/30.png) 
 
-1. Similar to our build variables, we can also configure release variables and could be used during our deployments.
+1.与我们的构建变量类似，我们也可以配置发布变量，并可以在我们的部署过程中使用。
 
-### Task 4: Running release in debug mode
+### 任务4: 以调试模式进行发布
 
-You can show additional information as release executes by running the entire release, or just the tasks in an individual release environment, in debug mode. This can help you resolve issues and failures.
+在调试模式下，可以在执行整个发布时查看详细的日志信息，或者是查看单个任务的日志信息，这些信息可以帮助我们解决问题，定位部署失败的原因。
 
-1. Go back to **Variables** from your release definition.
+1.从您的发布定义返回**Variables**。
 
-1. To initiate debug mode for an entire release, add a variable named System.Debug with the value true.
+1.要启动整个发布版的调试模式，请添加一个名为System.Debug的值为true的变量。
 
-   ![](images/31.png)
+   ![](images/31.png) 
 
-1. Save the release definition and queue a new release to check the log.
+1.保存发布定义，将其加入发布队列以检查日志。
 
-### Task 5: Clone, Export, and Import a release definition
+任务5: 克隆，导出和导入发布定义
 
-1. Select your release definition from the list of releases that you have.
+1.从您拥有的发布列表中选择您的发布定义。
 
-   ![](images/32.png)
+   ![](images/32.png) 
 
-2. Open the shortcut menu by clicking on **...** and select Clone, Export etc to clone or export the release definition.
+2.单击**...**打开快捷菜单，然后选择克隆，导出等克隆或导出发布定义。
 
-   ![](images/33.png)
+   ![](images/33.png) 
 
-   - **Clone** to create a complete copy of the selected definition with "Copy" appended to the name.
+   - **克隆**以旧名称加"复制"为新发布定义名称的完整副本。
 
-   - **Export** to create a JSON file containing a full representation of the selected release definition that you can save to your local computer.
+   - **导出**以创建一个JSON文件，这其中包含了发布的完整定义。
 
-## Exercise 4: Environments
+## 练习4: 环境
 
-A release definition is a collection of environments. An environment is a logical entity that represents where you want to deploy a release. Physically, the deployment in an environment may happen to a collection of servers, a cloud, multiple clouds, or an app store. The deployment steps in an environment are described using tasks.
+发布定义是一组环境。环境是一个逻辑实体，表示您想要部署发布版的位置。从物理上看，环境中的部署可能发生在一系列服务器，云，多个云或应用商店中。使用任务描述环境中的部署步骤。
 
-![](images/34.png)
+![](images/34.png) 
 
-### Task 1: Adding environments
+### 任务1: 添加环境
 
-1. Select your release definition and click edit.
+1.选择您的发布定义，然后单击编辑。
 
-1. Click on **Add enviroment** and choose **Create new environment.**
+1.点击**添加环境**，然后选择**创建新环境。**
 
-   ![](images/35.png)
+   ![](images/35.png) 
 
-1. Select **Azure App Service Deployment** template.
+1.选择**Azure App Service Deployment**模板。
 
-1. Choose Next and select the pre-deployment approval, trigger, and queue settings for the new environment.
+1.选择下一步，然后为新环境配置部署前审批，触发器和队列设置。
 
-   ![](images/36.png)
+   ![](images/36.png) 
 
-1. You can add as many environments with different tasks for your deployment based on the needs.
+1.您可以根据需要为您的部署添加尽可能多的具有不同任务的环境。
 
-### Task 2: Cloning environments
+### 任务2: 克隆环境
 
-A release definition often contains several environments such as development, testing, QA, and production. Typically, all of these environments are fundamentally similar and the techniques used to set up and deploy to each one are the same with the exception of minor differences in configuration for each environment and task (such as target URLs, service paths, and server names).
+发布定义通常包含多个环境，例如开发，测试，质量保证和生产。通常，所有这些环境基本上都是相似的，每个环境和任务的配置细微差异(例如目标URL，服务路径和服务器名称) 除外，用于设置和部署到每个环境的技术都是相同的， 。
 
-1. Select the existing enviroment and choose Clone environment on the shortcut menu that opens from the environment's ellipses (...).
+1.选择现有环境，然后在从环境的省略号(...) 打开的快捷菜单上选择克隆环境。
 
-   ![](images/37.png)
+   ![](images/37.png) 
 
-1. Choose Next and select the pre-deployment approval, trigger, and queue settings for the new environment.
+1.选择下一步，然后为新环境选择预部署审批，触发器和队列设置。
 
-1. Choose Create and then edit the new environment name as required.
+1.选择创建，然后根据需要编辑新的环境名称。
 
-   ![](images/38.png)
+   ![](images/38.png) 
 
-1. After you have created and configured your environments, you could add tasks to them as we saw in the previous steps.
+1.创建并配置好环境后，可以像前面的步骤中所看到的那样向他们添加任务。
 
-### Task 3: Environment Templates
+### 任务3: 环境模板
 
-When you start a new release definition, or when you add an environment to an existing release definition, you can choose from a list of templates for each environment.
+当您开始新的发布定义或将环境添加到现有版本定义时，可以从每个环境的模板列表中进行选择。
 
-These templates pre-populate the environment with the appropriate tasks and settings, which can considerably reduce the time and effort required to create a release definition. Alternatively, you can choose to start with an empty release definition that contains only a single default empty environment, or an empty environment that contains no tasks.
+这些模板预先使用适当的任务和设置填充环境，这可以大大减少创建发布定义所需的时间和精力。或者，您可以选择以仅包含单个默认空白环境的空白版本定义或不包含任务的空白环境开始。
 
-You can also create your own custom environment templates from an environment you have populated and configured.
+您也可以从已填充和配置的环境中创建自己的自定义环境模板。
 
-1. Select the existing enviroment and choose **Save as template** on the ellipses (...).
+1.选择现有环境，并在椭圆(...) 上选择**另存为模板**。
 
-   ![](images/39.png)
+   ![](images/39.png) 
 
-1. Enter name, description and choose OK.
+1.输入名称，描述并选择确定。
 
-   ![](images/40.png)
+   ![](images/40.png) 
 
-1. The custom templates you create appear in the Custom tab of the Create new release definition dialog.
+1.创建的自定义模板显示在"创建新的发布定义"对话框的"自定义"选项卡中。
 
-   ![](images/41.png)
+   ![](images/41.png) 
 
-### Task 4: Approvals and Approvers
+### 任务4: 审批和审批者
 
-You can define approvers for each environment in a release definition. When a release is created from a release definition that contains approvers, the deployment stops at each point where approval is required until the specified approver grants approval or rejects the release (or re-assigns the approval to another user).
+您可以在发布定义中为每个环境定义审批者。从包含审批者的发布定义创建发布时，部署将停止在需要审批的每个点，直到指定审批者审批或拒绝发布(或将审批重新分配给其他用户) 。
 
-1. Select one of the environment and click on ellipsis (...). Select **Assign Approvers**.
+1.选择一个环境，然后单击省略号(...) 。选择**分配审批者**。
 
-   ![](images/42.png)
+   ![](images/42.png) 
 
-1. In the Approvals tab of the Configure dialog you specify details for pre-deployment and post-deployment approvers. When the Automatic checkbox is set for an approval step, the deployment is automatically approved.
+1.在"配置"对话框的"审批"选项卡中，指定预部署和部署后审批人的详细信息。当自动复选框设置为审批步骤时，部署将自动获得审批。
 
-   ![](images/43.png)
+   ![](images/43.png) 
 
-1. When you select the Specific Users option, you can specify and edit one or more approvers for an approval step. You can type part of the name and choose from the drop-down list of matching user names defined for the project.
+1.选择特定用户选项时，您可以指定和编辑审批步骤的一个或多个审批人。您可以键入名称的一部分，在下拉列表中进行选择当前团队项目的成员。
 
-   ![](images/44.png)
+   ![](images/44.png) 
 
-1. You can add multiple approvers for both pre-deployment and post-deployment settings. When you add multiple approvers, you can also control how they can approve the deployment.
+1.您可以为部署前和部署后设置添加多个审批者。添加多个审批者时，您还可以控制他们如何审批部署。
 
-   ![](images/45.png)
+   ![](images/45.png) 
 
-1. Save the release definition and queue a new release. Go to the release definition log to view the process.
+1.保存发布定义并执行发布。转到发布定义日志以查看过程。
 
-   ![](images/46.png)
+   ![](images/46.png) 
 
-1. Click **Approve or reject**. The release will continue deploying in the desired enviroment.
+1.点击**审批或拒绝**。该版本将继续部署在所需的环境中。
 
-   ![](images/47.png)
+   ![](images/47.png) 
