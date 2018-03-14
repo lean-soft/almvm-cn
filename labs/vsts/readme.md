@@ -23,16 +23,16 @@ folder: /labs/vsts/
      <ul class="fa-ul">
        <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="agile/">敏捷规划和项目组合管理 </a>    </li>
        <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="git/">基于Git的源代码版本管理 </a>    </li>
-       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="packagemanagement/">包管理</a> </li>
+       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="packagemanagement/">Package Management</a> </li>
        <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="continuousintegration/">建立持续集成</a> </li>
        <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="continuousdeployment/">启用持续交付</a> </li>
-       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="azurecd/">从Azure门户设置持续交付工作流程</a> </li>
+       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="azurecd/">Setting up Continuous Delivery workflow from the Azure Portal</a> </li>
        <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="testmanagement/">使用Visual Studio Team Services进行测试计划和管理</a> </li>
-       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="exploratorytesting/">使用Visual Studio Team Services进行探索性测试和反馈管理</a> </li>
-       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="selenium/">基于Selenium框架的界面自动化测试</a> </li>
-      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="load/">使用Visual Studio Team Services进行压力测试</a> </li>
-      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="monitor/">使用Application Insights监控应用程序</a> </li>
-      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="teams/">增加团队协作并与Microsoft团队沟通</a> </li>
+       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="exploratorytesting/">Exploratory Testing and Feedback Management using Visual Studio Team Services</a> </li>
+       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="selenium/">UI Automation using Selenium Tests</a> </li>
+      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="load/">Load Testing using Visual Studio Team Services</a> </li>
+      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="monitor/">Monitoring Applications using Application Insights</a> </li>
+      <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="teams/">Increase team collaboration and Communication with Microsoft Teams</a> </li>
       <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="powerbi/">使用Power BI连接到Visual Studio Team Services</a> </li>
         </ul>
 </div>
