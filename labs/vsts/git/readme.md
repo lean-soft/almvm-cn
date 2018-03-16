@@ -47,8 +47,8 @@ Last updated : {{ "now" | date: "%b %d, %Y" }}.
 1. 在 *Solutions* 下，选择 **Show Folder View**，查看本地Git存储库中的解决方案文件
 
     ![](images/showfolderview.png)
-
-1. 双击 **MHC_ASPNetCore.sln**，打开解决方案。
+    
+1. 双击 **MHC_ASPNetCore.sln**，打开解决方案
 
 ## 练习 2: 使用提交（commits）来保存工作
 
