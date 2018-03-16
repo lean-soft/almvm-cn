@@ -44,10 +44,9 @@ Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
     ![](images/clonewindowvs.png)
 
-    
 1.在 *Solutions* 下，选择 **Show Folder View**，查看本地Git存储库中的解决方案文件
 
-    ![](images/showfolderview.png)
+    ![](images/showfolderview.png)
 
 1. 双击 **MHC_ASPNetCore.sln**，打开解决方案。
 
