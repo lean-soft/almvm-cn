@@ -26,29 +26,29 @@ Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
     ![](images/78.png)
 
-1. 导航到**Code**，选择**Clone** ，在克隆窗口中选择 **Clone in Visual Studio**
+2. 导航到**Code**，选择**Clone** ，在克隆窗口中选择 **Clone in Visual Studio**
 
     ![](images/clonecode.png)
 
-1. 点击 **Yes**
+3. 点击 **Yes**
 
     ![](images/9.png)
 
-1. 系统会提示需要从Visual Studio登录到团队服务帐户，登录到您的帐户
+4. 系统会提示需要从Visual Studio登录到团队服务帐户，登录到您的帐户
 
-1. 点击 **Clone this repository**
+5. 点击 **Clone this repository**
 
     ![](images/3.png)
 
-1. 设置存储库的存放路径，然后选择 **Clone**，会将远程存储库克隆到本地
+6. 设置存储库的存放路径，然后选择 **Clone**，会将远程存储库克隆到本地
 
     ![](images/clonewindowvs.png)
 
-1. 在 *Solutions* 下，选择 **Show Folder View**，查看本地Git存储库中的解决方案文件
+7. 在 *Solutions* 下，选择 **Show Folder View**，查看本地Git存储库中的解决方案文件
 
     ![](images/showfolderview.png)
     
-1. 双击 **MHC_ASPNetCore.sln**，打开解决方案
+8. 双击 **MHC_ASPNetCore.sln**，打开解决方案
 
 ## 练习 2: 使用提交（commits）来保存工作
 
@@ -68,26 +68,26 @@ Git 提交（commits） 由以下内容组成-
 
 1. 打开 Visual Studio.
 
-1. 转到 **Team Explorer** 主面.
+2. 转到 **Team Explorer** 主面.
 
    ![](images/11.jpg)
 
-1.打开 **01_Demos_ASPNET5** 解决方案.
+3.打开 **01_Demos_ASPNET5** 解决方案.
 
    ![](images/12.jpg)
 
-1. 展开 **MyHealthAPI项目**. 转到 **controller** 文件夹，修改其中一个文件的代码.
+4. 展开 **MyHealthAPI项目**. 转到 **controller** 文件夹，修改其中一个文件的代码.
    当你修改代码时，Visual Studio会自动跟踪变更。
 
    ![](images/13.png)
 
-1. 在 **Team Explorer** 中打开 **Changes** . 输入本次提交的注释，并选择 **Commit All** 来创建一次提交.
+5. 在 **Team Explorer** 中打开 **Changes** . 输入本次提交的注释，并选择 **Commit All** 来创建一次提交.
 
    ![](images/14.png)
 
    ![](images/15.png)
 
-1. 当其他团队成员在存储库中更新了代码，需要同步其他人的变更到本地存储库。
+6. 当其他团队成员在存储库中更新了代码，需要同步其他人的变更到本地存储库。
    在 team explorer 中打开同步视图
 
    ![](images/16.png)
@@ -100,13 +100,13 @@ Git 提交（commits） 由以下内容组成-
 
    ![](images/18.png)
 
-1. 使用推送（push）将本地提交的变更同步到服务器.
+2. 使用推送（push）将本地提交的变更同步到服务器.
 
    ![](images/19.png)
 
    ![](images/20.png)
 
-1. 回到你的VSTS项目，点击 **Code** \| **History** 来查看提交
+3. 回到你的VSTS项目，点击 **Code** \| **History** 来查看提交
 
    ![](images/21.png)
 
@@ -116,16 +116,16 @@ Git 提交（commits） 由以下内容组成-
 
 1. 切换到 **Visual Studio**.
 
-1. 展开项目 **MyHealth.API** . 转到 **Controllers** 文件夹，修改其中的一个或多个任意文件.
+2. 展开项目 **MyHealth.API** . 转到 **Controllers** 文件夹，修改其中的一个或多个任意文件.
    
-1. 在 team explorer中，转到 **Changes** 视图. 可以看到有两个文件被编辑了. 选中一个文件来创建一个提交，在Tteam explorer中，通过 暂存（Stage）将这个文件加入到Git的Stage区域
+3. 在 team explorer中，转到 **Changes** 视图. 可以看到有两个文件被编辑了. 选中一个文件来创建一个提交，在Tteam explorer中，通过 暂存（Stage）将这个文件加入到Git的Stage区域
    这会在本地仓库中创建一个**.gitignore** 文件，如果这个忽略文件在这之前已提交，忽略此文件不会从本地存储库中移除。
 
    ![](images/22.png)
 
    ![](images/23.png)
 
-1. 点击 **Commit Staged and Sync** 来更新远程存储库.
+4. 点击 **Commit Staged and Sync** 来更新远程存储库.
 
    ![](images/24.png)
 
@@ -139,16 +139,16 @@ Git的 **Branches and Merges** 功能通过拉取请求（pull requests）来实
 
 1. 打开Visual Studio.
 
-1. 打开 Team Explorer主页.
+2. 打开 Team Explorer主页.
 
    ![](images/25.png)
 
-1. 展开 **MyHealth.API**项目. 转到 **controllers** 文件夹，修改其中的一个或多个任意文件.
+3. 展开 **MyHealth.API**项目. 转到 **controllers** 文件夹，修改其中的一个或多个任意文件.
   历史记录窗口会显示 提交的 ID, 作者, 日期, 和本地存储库所有变更的注释说明
 
    ![](images/26.png)
 
-1. 在历史记录窗口中右击并选择一个最近的提交，选择 **Compare with previous**.
+4. 在历史记录窗口中右击并选择一个最近的提交，选择 **Compare with previous**.
 
    ![](images/27.png)
 
@@ -156,11 +156,11 @@ Git的 **Branches and Merges** 功能通过拉取请求（pull requests）来实
 
 1. 右键单击您之前修改的控制器文件，然后选择 **View History**. 您可以过滤提交来查找需要恢复的文件版本.
 
-1. 右键单击包含要还原的文件版本的提交，然后选择 **View commit details**.
+2. 右键单击包含要还原的文件版本的提交，然后选择 **View commit details**.
 
    ![](images/28.png)
 
-1. 您将在团队资源管理器中看到该文件。右键单击该文件并在团队资源管理器中的提交详细信息中选择打开以还原.
+3. 您将在团队资源管理器中看到该文件。右键单击该文件并在团队资源管理器中的提交详细信息中选择打开以还原.
 
    ![](images/29.png)
 
@@ -180,11 +180,11 @@ Git的 **Branches and Merges** 功能通过拉取请求（pull requests）来实
 
    ![](images/30.png)
 
-1. 右击主分支 (通常是基于 master 来创建子分支)， 选择 **New Local Branch From**.
+2. 右击主分支 (通常是基于 master 来创建子分支)， 选择 **New Local Branch From**.
 
    ![](images/31.png)
 
-1. 输入分支名称并点击 **create branch**.
+3. 输入分支名称并点击 **create branch**.
 
    ![](images/32.png)
 
@@ -197,19 +197,19 @@ Git会跟踪您正在使用哪个分支，并确保在您获取分支时，您�
 
    ![](images/33.png)
 
-1. 你可以确认已获取的分支，通常在Visual Studio窗口底部会显示当前分支，如图所示。
+2. 你可以确认已获取的分支，通常在Visual Studio窗口底部会显示当前分支，如图所示。
 
    ![](images/34.png)
 
-1. 定位到需要发布的分支.
+3. 定位到需要发布的分支.
 
    ![](images/35.png)
 
-1. 右键分支名并点击 **Publish branch**.
+4. 右键分支名并点击 **Publish branch**.
 
    ![](images/36.png)
 
-1. 返回到 VSTS 帐户，查看 **Code** \| **Branches**, 可以看到发布成功的分支.
+5. 返回到 VSTS 帐户，查看 **Code** \| **Branches**, 可以看到发布成功的分支.
 
    ![](images/37.png)
 
