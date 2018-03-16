@@ -41,17 +41,17 @@ folder: /labs/vsts/
 
 为了完成你需要的这些实验
 
-- **Visual Studio Team Services 账户**: 如果您没有，你可以从 [这里](https://www.visualstudio.com/){:target="_blank"} 注册 
+- **Visual Studio Team Services 账户**: 如果您没有，你可以从 [这里](https://www.visualstudio.com/) 注册 
 
-- **Microsoft Azure Account**: Azure相关实验需要一个激活的有效且Azure帐户。 如果您还没有，可以注册 [免费试用 ](https://azure.microsoft.com/en-us/free/){:target="_blank"} 。
+- **Microsoft Azure Account**: Azure相关实验需要一个激活的有效且Azure帐户。 如果您还没有，可以注册 [免费试用 ](https://azure.microsoft.com/en-us/free/)。
 
-  - 如果您有Visual Studio Active 订阅账户，您有权每月获得一个 $50- $150 的Azure信用额度。您可以参考此 [链接](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/){:target="_blank"} 以了解更多信息，包括如何激活并开始使用您的月度Azure信用额度.
+  - 如果您有Visual Studio Active 订阅账户，您有权每月获得一个 $50- $150 的Azure信用额度。您可以参考此 [链接](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/) 以了解更多信息，包括如何激活并开始使用您的月度Azure信用额度.
 
-  - 如果您没有Visual Studio Active 订阅账户, 则可以注册免费的 [Visual Studio Dev Essentials](https://www.visualstudio.com/dev-essentials/){:target="_blank"} 流程来创建 **Azure 免费账户** (包含1年免费服务，第1个月200美元额度)。
+  - 如果您没有Visual Studio Active 订阅账户, 则可以注册免费的 [Visual Studio Dev Essentials](https://www.visualstudio.com/dev-essentials/) 流程来创建 **Azure 免费账户** (包含1年免费服务，第1个月200美元额度)。
 
-- **Visual Studio 2017** 或更高版本 - 您将在一些实验中使用Visual Studio. 您可以在安装了VS 2017的个人电脑上, 或者下载使用最新的 [ALM VM](../tfs/),  或者在 [Azure](https://portal.azure.com){:target="_blank"} 上使用预安装了Visual Studio的虚拟服务器。
+- **Visual Studio 2017** 或更高版本 - 您将在一些实验中使用Visual Studio. 您可以在安装了VS 2017的个人电脑上, 或者下载使用最新的 [ALM VM](../tfs/),  或者在 [Azure](https://portal.azure.com) 上使用预安装了Visual Studio的虚拟服务器。
 
-- 您可以使用 [**Visual Studio Team Services Demo Data generator**](https://vstsdemogenerator.azurewebsites.net){:target="_blank"} 在您的您的Visual Studio Team Services帐户中创建包含预定义数据的团队项目.
+- 您可以使用 [**Visual Studio Team Services Demo Data generator**](https://vstsdemogenerator.azurewebsites.net) 在您的您的Visual Studio Team Services帐户中创建包含预定义数据的团队项目.
 
 ## 使用VSTS DemoGenerator
 
