@@ -6,7 +6,7 @@ permalink: /labs/vsts/agile/
 folder: /labs/vsts/agile/
 ---
 
-最终更新时间 : {{ "now" | date: "%b %d, %Y" }}.
+Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
 ## 概述
 
@@ -16,7 +16,7 @@ folder: /labs/vsts/agile/
 
 要完成此实验，您需要：
 
-- **Visual Studio Team Services帐户**: 如果您没有，你可以从 [这里](https://www.visualstudio.com/){:target="_blank"} 注册。
+- **Visual Studio Team Services帐户**: 如果您没有，你可以从 [这里](https://www.visualstudio.com/) 注册。
 
 - **Visual Studio 2017** 或更高版本
 
@@ -28,7 +28,7 @@ folder: /labs/vsts/agile/
 
 1. 点击 **Visual Studio** 图标并浏览到MyHealthClinic项目。当前我们只有一个项目。您可以从这里 **选择/创建** 许多项目。
 
-   {% include note.html content= "如果您还未准备好, 您可以在 (https://{youraccount}.visualstudio.com) 登陆您的Visual Studio Team Services 账户。" %}
+   如果您还未准备好, 您可以在 (https://{youraccount}.visualstudio.com) 登陆您的Visual Studio Team Services 账户。
 
    ![](images/6.png)
 
@@ -45,7 +45,7 @@ folder: /labs/vsts/agile/
 
     ![](images/8.png)
 
-1. 单击每个团队旁边的省略号并选择删除，删除 **Team 1** 和 **Team 2** 。
+1. 单击每个团队旁边的省略号并选择 **Delete**，删除 **Team 1** 和 **Team 2** 。
 
     ![](images/71.png)
 
@@ -79,7 +79,7 @@ folder: /labs/vsts/agile/
 
     ![](images/16.png)
 
-    {% include important.html content= "您可能需要调整冲刺的日期，选择与当前日历日期相对应的日期。" %}
+   您可能需要调整冲刺的日期，选择与当前日历日期相对应的日期。
 
 1. 在 **Default iteration** 旁点击 **Change** 将MyHealthClinic设置为默认迭代。
 
@@ -125,18 +125,15 @@ folder: /labs/vsts/agile/
 
    ![](images/26.png)
 
-   {% include note.html content= "To maximize a team's ability to consistently deliver high quality software, Kanban emphasize two main practices. The first, visualize the flow of work, requires you to map your team's workflow stages and configure your Kanban board to match. The second, constrain the amount of work in progress, requires you to set work-in-progress (WIP) limits. You're then ready to track progress on your Kanban board and monitor key metrics to reduce lead or cycle time.
    为了最大限度地提高团队持续提供高质量软件的能力，看板强调了两种主要方法：第一种可视化工作流程，要求您按照您团队的工作流程来配置看板，第二，限制正在进行的工作数量，要求设置在制品（WIP）限制，然后在看板上跟踪进度并监控关键指标，以便改进流程减少软件交付中响应环节耗费的时间。
 
    您的看板会将您的待办事项变为交互式信号板，提供可视化的工作流程。随着工作从创意想法到最终完成，您需要更新看板上的卡片。每一列代表一个工作阶段，每张卡片代表该阶段工作中的用户故事（蓝卡）或Bug（红卡）。
-   " %}
 
 1. 我们将修改 **Kanban board** ，以绘制我们团队的工作流程。点击齿轮图标打开设置对话框。
 
    ![](images/28.png)
 
-1. You can either increase or simplify the information that displays on your cards. Your best bet is to show fields on cards based on what your team frequently refers to or updates when using the **Kanban** and **Task** boards. Make sure the fields for your cards match the following image.
-您可以增加或简化卡片上显示的信息。卡片上显示字段最好包含您的团队在使用 **Kanban** 和 **Task** 时经常参考或更新的信息。确保您卡片的字段与下面的图片一致。
+1. 您可以增加或简化卡片上显示的信息。卡片上显示字段最好包含您的团队在使用 **Kanban** 和 **Task** 时经常参考或更新的信息。确保您卡片的字段与下面的图片一致。
 
     ![](images/78.png)
 
@@ -194,7 +191,7 @@ folder: /labs/vsts/agile/
 
     Kanban板支持将工作项从新建到完成的流动可视化。当添加泳道时，还可以支持不同服务级别类的工作状态可视化。可以创建一个泳道来代表需要跟踪的任何其他维度。
 
-    {% include note.html content= "例如，您可以创建三个泳道— **Expedite** ， **Standard** 和 **Park** 来跟踪高优先级的工作、标准优先级的工作和当前被阻断的工作。" %}
+    例如，您可以创建三个泳道— **Expedite** ， **Standard** 和 **Park** 来跟踪高优先级的工作、标准优先级的工作和当前被阻断的工作。
 
 1. 在Kanban板，点击 **Configure board settings** ，然后点击Swimlanes，添加泳道 **Expedite** 。
 
@@ -218,13 +215,13 @@ folder: /labs/vsts/agile/
 
    ![](images/25.png)
 
-   {% include important.html content= "如果没有在Current或Future看到列出的任何冲刺链接，需要配置团队冲刺时间。" %}
+   如果没有在Current或Future看到列出的任何冲刺链接，需要配置团队冲刺时间。
 
 1. 下一步检查所有冲刺工作项的工作量
 
    ![](images/90.png)
 
-   {% include note.html content= "初始计划应该根据估算的工作量和团队速率确定团队能力范围内的需求子集。团队计划在冲刺时间段内完成的全部工作或故事应与速率匹配。" %}
+   初始计划应该根据估算的工作量和团队速率确定团队能力范围内的需求子集。团队计划在冲刺时间段内完成的全部工作或故事应与速率匹配。
 
 1. 下一步，需要确定团队的实际容量。速率与团队如何评估需求相关，而容量则与实际的任务时间相关——无论是小时数还是天数。容量工作时间与团队成员、假期、休假和非工作时间相关。
 
@@ -234,17 +231,17 @@ folder: /labs/vsts/agile/
 
    ![](images/91.png)
 
-   {% include note.html content= "大多数团队都以小时为单位设定容量，但是也可以天数设定。例如, 5天相当于一个典型8小时工作日的40小时。选择用来估计完成任务所需时间的单位。
+   大多数团队都以小时为单位设定容量，但是也可以天数设定。例如, 5天相当于一个典型8小时工作日的40小时。选择用来估计完成任务所需时间的单位。
 
    如果没有看到列出的团队成员，需要将他们添加到团队中。此外，你还需要设定计划的休息日。可以在团队设置中管理周末或其他休息日。
 
-   容量页面提供的其他选项有：复制以前的迭代容量，添加团队成员，添加多个活动。" %}
+   容量页面提供的其他选项有：复制以前的迭代容量，添加团队成员，添加多个活动。
 
 1. 单击任何用户的 **Days Off** 列。为休息日设置开始和结束日期，这样在该冲刺该用户就有了更多的休息日，当然其工作的容量就少了。
 
    ![](images/95.png)
 
-   {% include note.html content= "当你给团队成员添加了几天的休息日， **Work Details** 计划图将会自动调整，如果分配给团队成员的工作比当前冲刺的工作时间还要多，那么就会显示红色。" %}
+   当你给团队成员添加了几天的休息日， **Work Details** 计划图将会自动调整，如果分配给团队成员的工作比当前冲刺的工作时间还要多，那么就会显示红色。
 
 1. 在冲刺积压工作项中，添加一个任务。从冲刺积压工作项创建任务，会自动将任务链接到该积压工作项。
 
@@ -254,11 +251,11 @@ folder: /labs/vsts/agile/
 
    ![](images/93.png)
 
-   {% include note.html content= "在规划阶段，剩余工作是完成任务所需时间的估计。
+   在规划阶段，剩余工作是完成任务所需时间的估计。
 
    一个好的经验法则是，任务完成的时间不要超过一天。如果任务太大，团队应该将其分解。在某些情况下，在完成其他任务之前，可能无法有效地估算一些任务，此时可以提前创建任务，当有足够信息的时候再去估算。
 
-   在冲刺期间，团队成员更新剩余的工作，以持续地反映完成任务所需的时间。这个值可以在工作开始后增加。例如，在工作了4个小时后，估计需要8个小时，团队成员意识到他还需要16个小时才能完成。他将用20(8-4+16)更新剩余的工作量。当执行任务时，可能会发现需要更多的时间。总是用对剩余工作的最好估算来更新任务。这样，就能准确地反映出冲刺中剩余的工作总量。" %}
+   在冲刺期间，团队成员更新剩余的工作，以持续地反映完成任务所需的时间。这个值可以在工作开始后增加。例如，在工作了4个小时后，估计需要8个小时，团队成员意识到他还需要16个小时才能完成。他将用20(8-4+16)更新剩余的工作量。当执行任务时，可能会发现需要更多的时间。总是用对剩余工作的最好估算来更新任务。这样，就能准确地反映出冲刺中剩余的工作总量。
 
 1. 当定义任务和评估工作时，将会看到每个团队成员的容量图表开始填充。容量条跟踪剩余的工作，对应每个团队成员以及整个团队的容量。
 
@@ -266,7 +263,7 @@ folder: /labs/vsts/agile/
 
    ![](images/94.png)
 
-1. Click on the upper right corner where the sprint burndown is shown. Throughout your sprint, you can monitor the sprint burndown chart to determine if your team is on track to complete its sprint plan.单击右上角的冲刺燃尽图。在冲刺中，能够通过冲刺燃尽图，以确定团队是否正在按计划完成其冲刺目标。
+1. 单击右上角的冲刺燃尽图。在冲刺中，能够通过冲刺燃尽图，以确定团队是否正在按计划完成其冲刺目标。
 
    ![](images/36.png)
 
@@ -292,7 +289,7 @@ folder: /labs/vsts/agile/
 
    ![](images/41.png)
 
-   {% include important.html content= "丰富的卡片不仅提供了团队感兴趣的信息，而且还提供了一种无需打开工作条目就可以更新字段的方法。使用样式规则，可以根据设置的标准，使用特定的颜色突出显示对应的工作项。" %}
+   丰富的卡片不仅提供了团队感兴趣的信息，而且还提供了一种无需打开工作条目就可以更新字段的方法。使用样式规则，可以根据设置的标准，使用特定的颜色突出显示对应的工作项。
 
 1. 还可以在卡片上看到头像和其他信息。
 
@@ -322,7 +319,7 @@ folder: /labs/vsts/agile/
 
 ![](images/45.png)
 
-{% include important.html content= "随着产品开发的推进，故事会可能会变得很大，很难处理。因此使用 **Feature** 工作项类型来对应。将产品积压工作项分组，在更大级别上处理相关信息。" %}
+随着产品开发的推进，故事会可能会变得很大，很难处理。因此使用 **Feature** 工作项类型来对应。将产品积压工作项分组，在更大级别上处理相关信息。
 
 1. 点击 **Features**，将会看到已有的特性工作项列表。如果需要可以添加更多工作项。
 
@@ -342,7 +339,7 @@ folder: /labs/vsts/agile/
 
    ![](images/49.png)
 
-   {% include important.html content= "跟踪产品开发中涉及到的所有工作是很重要的，这样就可以计划并跟踪哪些工作已经完成，哪些需要完成。" %}
+   跟踪产品开发中涉及到的所有工作是很重要的，这样就可以计划并跟踪哪些工作已经完成，哪些需要完成。
 
 1. 回到 **Board** 上，当在看板上检查产品待办事项列表的状态时，也有一个看板来查看功能的当前状态。这个看板也像待办事项看板一样定制。
 
@@ -366,7 +363,7 @@ folder: /labs/vsts/agile/
 
    ![](images/52.png)
 
-   {% include note.html content= "Overview页面提供了对默认的团队仪表板访问，可以通过添加、删除或重新排列这些磁贴来定制。每个磁贴对应一个小部件，它提供对一个或多个特性或功能的访问。" %}
+   Overview页面提供了对默认的团队仪表板访问，可以通过添加、删除或重新排列这些磁贴来定制。每个磁贴对应一个小部件，它提供对一个或多个特性或功能的访问。
 
 1. 添加仪表板：从仪表板选项卡，单击加号图标，并输入一个仪表板名称。
 
@@ -394,7 +391,7 @@ folder: /labs/vsts/agile/
 
     ![](images/104.png)
 
-    {% include note.html content= "通过添加条件格式，让小部件可视化地提醒用户。" %}
+    通过添加条件格式，让小部件可视化地提醒用户。
 
     ![](images/105.png)
 
@@ -474,7 +471,7 @@ Team Services支持两种流程类型。第一，核心系统流程——Scrum�
 
    ![](images/65.png)
 
-   {% include note.html content= "正在为MyHealthClinic内部的票务系统的内部id创建一个文本字段。" %}
+   正在为MyHealthClinic内部的票务系统的内部id创建一个文本字段。
 
 1. 到目前为止，只创建了字段定义，我们必须将其添加到工作项的布局中。我们创建一个新组来显示自定义信息，因此所有的定制字段都会出现在这个组中。将该组命名为 **MyHealthClinic** ，并单击 **Add field** 。
 
