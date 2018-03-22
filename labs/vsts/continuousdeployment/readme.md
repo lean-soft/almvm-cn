@@ -120,7 +120,7 @@ Last updated : {{ "now" | date: "%b %d, %Y" }}.
 
 1. 点击**Private Area**登录。
 
-    - 用户名: 用户
+    - 用户名: User
     - 密码: P2ssw0rd@1
 
    ![](images/20.png) 
