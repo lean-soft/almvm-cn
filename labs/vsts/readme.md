@@ -9,7 +9,7 @@ folder: /labs/vsts/
 <div class="vstsMain">
 <div class="productcolmain">
   <div class="pageheader">
-             <b>基于Visual Studio Team Services的DevOps管理</b> </div>
+             <b>基于Visual Studio Team Services的DevOps管理</b> </div>  
      <div class="herotext2">       
              了解如何使用Visual Studio Team Services更好地进行规划，协同编码并提高软件交付效率
   </div>
