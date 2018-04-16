@@ -21,7 +21,7 @@ In order to complete this lab you will need the Visual Studio 2017 virtual machi
 
 <a href="https://www.microsoft.com/handsonlabs/SelfPacedLabs?storyId=external%3A%2F%2Fcontent-private%2Fcontent%2Fexternal%2FMicrosoft-Virtual-Labs%2FDT00152" class="launch-hol" role="button" target="_blank"><span class="lab-details">Launch the virtual machine</span></a>
 
-Alternatively, you can download the virtual machine from [here](../almvmdownload/)
+Alternatively, you can download the virtual machine from [here](../almvmdownload/)   
 
 **Important note**:
 
