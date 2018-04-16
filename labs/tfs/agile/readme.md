@@ -8,11 +8,12 @@ folder: /labs/tfs/agile/
 
 Lab version:15.4
 
-Last updated:12/5/2017 
+Last updated:12/5/2017
 
 ## Overview
 
 在这个实验中，你将学习使用Team Foundation Server 2018提供的关于敏捷计划，项目流程管理来帮助你快速的制定团队计划，管理和追踪相关工作进度。你将学习如何使用积压工作列表，迭代看板和任务版来跟踪迭代中的工作流。我们还将了解这些工具是如何在这个版本中得到增强的，以针对更大的团队和组织。
+
 
 ## Prerequisites
 
@@ -20,7 +21,7 @@ In order to complete this lab you will need the Visual Studio 2017 virtual machi
 
 <a href="https://www.microsoft.com/handsonlabs/SelfPacedLabs?storyId=external%3A%2F%2Fcontent-private%2Fcontent%2Fexternal%2FMicrosoft-Virtual-Labs%2FDT00152" class="launch-hol" role="button" target="_blank"><span class="lab-details">Launch the virtual machine</span></a>
 
-Alternatively, you can download the virtual machine from [here](../almvmdownload/)	
+Alternatively, you can download the virtual machine from [here](../almvmdownload/)
 
 **Important note**:
 
@@ -425,3 +426,6 @@ In this exercise, you will learn about some of the agile portfolio management ca
     ![](images/080.png)
 
     **Note**: After completing this lab, the virtual machine will continue to run with the date & time that was set for demonstration purposes at the beginning of this lab. Don't forget to reset the virtual machine to its original snapshot/checkpoint after you complete this lab, unless you are moving on to a follow-up lab based on this lab's endpoint.
+
+
+
