@@ -12,7 +12,7 @@ Last updated:12/5/2017
 
 ## Overview
 
-In this lab, you will learn about the agile planning and portfolio management tools and processes provided by Team Foundation Server 2018 and how they can help you quickly plan, manage, and track work across your entire team. You will explore the product backlog, sprint backlog, and task boards which can be used to track the flow of work during the course of an iteration. We will also take a look at how the tools have been enhanced in this release to scale for larger teams and organizations.
+在这个实验中，你将学习使用Team Foundation Server 2018提供的关于敏捷计划，项目流程管理来帮助你快速的制定团队计划，管理和追踪相关工作进度。你将学习如何使用积压工作列表，迭代看板和任务版来跟踪迭代中的工作流。我们还将了解这些工具是如何在这个版本中得到增强的，以针对更大的团队和组织。
 
 ## Prerequisites
 
