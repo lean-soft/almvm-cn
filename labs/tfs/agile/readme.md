@@ -75,7 +75,7 @@ Last updated:12/5/2017
 
     ![](images/005.png)
 
-1. j积压工作项列表有助于规划需要完成的工作。一旦您有了一个backlog，您就可以使用它来帮助管理完成工作的时间，以及积压工作列表上与签入、验收测试或其他标准关联的项目。
+1. 积压工作项列表有助于规划需要完成的工作。一旦您有了一个backlog，您就可以使用它来帮助管理完成工作的时间，以及积压工作列表上与签入、验收测试或其他标准关联的项目。
 
     ![](images/006.png)
 
@@ -190,7 +190,7 @@ Last updated:12/5/2017
 
     ![](images/029.png)
 
-1. 容量视图允许我们指定每个团队成员在这个项目上工作的每天的小时数，每个团队成员的休息日，以及整个团队的休息日。这些容量设置适用于当前的迭代。您可以选择使用活动列来描述每个团队成员专门从事的规程。当任务被活动分解时，它可以为您的团队提供另一种视图，以确定是否有足够多的人处理文档以满足对迭代的需求。现在，保留容量设置未修改。The capacity view allows us to specify the number of hours per day that each team member will be working on this project, days off per team member, and overall team days off. These capacity settings apply to the current iteration. You can optionally use the activity column to describe the disciplines that each team member specializes in. When tasks are broken down by activity as well, it can provide another view across your team's capacity to determine if, for example, you have enough people working on documentation to meet the demands for this iteration.  For now, leave the capacity settings unmodified.
+1. 容量视图允许我们指定每个团队成员在这个项目上工作的每天的小时数，每个团队成员的休息日，以及整个团队的休息日。这些容量设置适用于当前的迭代。您可以选择使用活动列来描述每个团队成员专门从事的规程。当任务被活动分解时，它可以为您的团队提供另一种视图，以确定是否有足够多的人处理文档以满足对迭代的需求。现在，保留容量设置未修改。
 
     ![](images/030.png)
 
