@@ -17,415 +17,408 @@ Last updated:12/5/2017
 
 ## Prerequisites
 
-In order to complete this lab you will need the Visual Studio 2017 virtual machine provided by Microsoft. Click the button below to launch the virtual machine on the Microsoft Hands-on-Labs portal.
+为了完成这个实验你需要微软提供的装有Visual Studio 2017虚拟机，点击下面的按钮启动虚拟机。
 
 <a href="https://www.microsoft.com/handsonlabs/SelfPacedLabs?storyId=external%3A%2F%2Fcontent-private%2Fcontent%2Fexternal%2FMicrosoft-Virtual-Labs%2FDT00152" class="launch-hol" role="button" target="_blank"><span class="lab-details">Launch the virtual machine</span></a>
 
-Alternatively, you can download the virtual machine from [here](../almvmdownload/)   
+或者，您可以从这里下载虚拟机 [这里](../almvmdownload/)   
 
-**Important note**:
+**注意事项**:
 
-This lab requires you to use the default state of the virtual machine, before any modifications are made to work items or source in TFS. If you followed the **Working with the Visual Studio 2017 ALM Virtual Machine.docx** instructions you should already have a snapshot/checkpoint of the virtual machine before working with it for the first time. Apply this snapshot/checkpoint before starting this lab.
+这个实验室要求您在TFS中对工作项或源进行任何修改之前使用虚拟机的默认状态。如果你按照 **Working with the Visual Studio 2017 ALM Virtual Machine.docx** 的说明指导，在第一次使用虚拟机之前，您应该已经有了虚拟机的快照，在实验开始前获取这个快照。
 
 ## About the Fabrikam Fiber Scenario
 
-This set of hands-on-labs uses a fictional company, Fabrikam Fiber, as a backdrop to the scenarios you are learning about. Fabrikam Fiber provides cable television and related services to the United States. They are growing rapidly and have embraced Windows Azure to scale their customer-facing web site directly to end-users to allow them to self-service tickets and track technicians. They also use an on-premises ASP.NET MVC application for their customer service representatives to administer customer orders.
+这组动手实验使用了一个虚构的公司，Fabrikam Fiber，作为学习的场景的背景。Fabrikam Fiber 公司为美国提供有线电视和相关服务。它们正在迅速成长，并已经使用了Windows Azure，将面向客户的网站直接扩展到终端用户，让他们可以自助机票和追踪技术人员。他们也使用一个本地部署的ASP.NET MVC应用为客户服务代表管理客户订单。
 
-In this set of hands-on labs, you will take part in a number of scenarios that involve the development and testing team at Fabrikam Fiber. The team, which consists of 8-10 people has decided to use Visual Studio application lifecycle management tools to manage their source code, run their builds, test their web sites, and plan and track the project.
+在这组动手实验中，您将参与一些涉及到 Fabrikam Fiber 的开发和测试团队的场景。这个团队由8-10人组成，他们决定使用Visual Studio应用生命周期管理工具来管理他们的源代码，运行他们的构建，测试他们的web站点，并计划和跟踪项目。
 
 ## Exercise 1: Agile Project Management
 
-In this exercise, you will learn how to use Team Foundation Server 2018 to manage your product backlog, create work items, break work items into tasks, assign tasks to team members, and track progress using the task board. This overview will demonstrate the basic project management tools that small- to medium-sized development teams can utilize for product development.
+在这个练习中，您将学习如何使用Team Foundation Server 2018来管理您的积压工作列表，创建工作项，将工作项分解为任务，将任务分配给团队成员，并使用任务板跟踪进度。这个概述将展示中小型开发团队用于产品开发可以利用的基本项目管理工具。
 
-> **Note:** The team project used in this lab uses a Scrum process template, but the core features demonstrated apply to all process templates.
+> **注意:** 在这个实验中使用的团队项目使用Scrum流程模板，但是核心特性演示适用于所有流程模板。
 
 ### Task 1: Team Foundation Server Web Portal
 
-1. Log in as **Sachin Raj (VSALM\Sachin)**. All user passwords are **P2ssw0rd**.
+1. 登陆用户名 **Sachin Raj (VSALM\Sachin)**. 所有密码都是 **P2ssw0rd**。
 
-    > **Note:** In order to fully demonstrate the ALM features in this lab, we will first set the virtual machine to a specific date that lines up with a pre-configured, in-flight iteration. This lab needs to be walked through using the original virtual machine state (without any modifications made to source or work items), otherwise you will see errors.
+    > **注意:** 为了充分演示这个实验的ALM特性，我们首先将虚拟机设置为一个特定的日期，该日期与预先配置的、正在进行的迭代进行组合排列。这个实验需要使用原始的虚拟机状态（不需要对源或工作项进行任何修改），否则将报错。
 
-1. **Right-click** the **ConfigureALMDemo.bat** file on the Desktop and then select **Run as administrator**. This will set the date and time in the virtual machine to be a specific date that lines up with the demonstration data.
-
-1. Launch **Internet Explorer** from the taskbar and click **TFS FF Portal** from the favorites bar at the top.
+1. 点击实验室下拉菜单 **TFS** 打开TFSweb页面。
 
     ![](images/000.png)
 
-1. Select **Browse all** option from the team dropdown box in the top left corner of the portal.
+1. 从门户左上角的下拉框中选择 **Browse all** 选项。
 
     ![](images/001.png)
 
-1. The new default view shows that the Fabrikam Fiber collection has one project in it named **FabrikamFiber**. This project contains a few different teams, with the **Fabrikam Fiber Leadership Team** being set as the default team for the project. We will take a closer look at teams in a later exercise. Note that this lab refers to this default team as both the leadership team and the management team. You have easy access to user-specific queries, and can also quickly jump to hubs for any given team by hovering over its row.
+1. 新的视图显示，Fabrikam Fiber 的集合有一个项目，叫做 **FabrikamFiber** 。这个项目包含了几个不同的团队，**Fabrikam Fiber Leadership Team** 被设置为项目的默认团队。我们将在以后的练习中更详细的了解团队。请注意，这个实验将这个默认的团队称为领导团队和管理团队。您可以轻松地访问特定用户的查询，并且可以通过点击该行快速跳转到任何团队。
 
     ![](images/002.png)
 
-1. Select the **Fabrikam Fiber Web Team** and then click **Navigate**.
+1. 选择 **Fabrikam Fiber Web Team** 然后点击。
 
     ![](images/003.png)
 
-1. The **Home** view for the Fabrikam Fiber Web team provides a high-level overview of the current iteration (Sprint 3) including team workload versus capacity, burndown of tasks over time, and team favorites, which can include a configurable assortment of work item queries, build definitions, and version control paths. In addition, there are links to quickly create new work items and bugs, load the backlog, task board, initiate requests for feedback and so on.
+1. Fabrikam Fiber Web团队的 **Home** 视图提供了当前迭代（Sprint 3）的高级概述，包括团队工作负载和容量、任务随时间的消耗以及团队收藏夹，其中包括可配置的工作项查询、构建定义和版本控制路径。此外，还有一些链接可以快速创建新的工作项和bug，跳转待办事项列表，任务板，发起反馈请求等等。
 
     ![](images/004.png)
 
-    > **Note:** Team favorites can be added or removed from within the web portal. For example, navigate to the Build tab to assign build definitions as a team favorite. In addition, team favorite work item queries can be modified from within Visual Studio.
+    > **注意:** 团队收藏夹的内容可以在web门户中添加或删除。例如，添加生成定义选项卡到团队收藏夹来快速导航到某个生成。此外，团队收藏夹的工作项查询可以在Visual Studio中进行修改。
 
-    Each team can have different team favorites listed, different work capacity, and even different work items. The determining factor of where a work item will show up is governed by the **Area** field.
-
-1. As you can see under the **Team Members** section, there are several members listed in this team. Teams are a concept that were originally introduced in Team Foundation Server 2012 to make it easier to manage, assign, and track work.
+1. 正如您在 **Team Members** 部分中所看到的，在这个团队中有几个成员。团队是一个概念，最初是在Team Foundation Server 2012中引入的，目的是让管理、分配和跟踪工作变得更容易。
 
 ### Task 2: Working with the Backlog
 
-1. Navigate to the backlog by clicking **Backlogs** under the **Work** section.
+1. 通过单击 **Work** 下面的 **Backlogs** 来导航到Backlog。
 
     ![](images/005.png)
 
-1. The product backlog helps define the work that needs to be done. Once you have a backlog, you can use it to help manage when that work gets done, as well as associate items on the backlog with check-ins, acceptance tests, or other criteria.
+1. j积压工作项列表有助于规划需要完成的工作。一旦您有了一个backlog，您就可以使用它来帮助管理完成工作的时间，以及积压工作列表上与签入、验收测试或其他标准关联的项目。
 
     ![](images/006.png)
 
-    > **Note:** The Current iteration shown in the tree on the left side of this screen is Iteration 3. Team Foundation Server uses the current date and time to determine the current iteration. The virtual machine you are using has been set to use a date of July 9, 2013 for purposes of this lab.
+    > **注意:** 在这个屏幕左边的迭代树中显示的当前迭代是迭代3。Team Foundation Server使用当前日期和时间来确定当前迭代。为了用于本实验，您正在使用的虚拟机已被设置为2013年7月9日。
 
-1. Imagine that the VP of Fabrikam Fiber has requested that a new user story be implemented for the customer-facing service portal. This new user story will enable customers to see weather-related service outages. This user story is being designated as high-priority because many customers requested it and customer service indicated that it would greatly reduce phone support during outages.
+1. 猜想一下， Fabrikam Fiber的副总裁要求为面向客户的服务门户实现一个新的用户故事。这个新的用户故事内容包括使客户能够看到与由于天气原因导致的服务中断。这个用户故事被指定为高优先级，因为许多客户需要它，而客户服务人员表明它将大大减少在停机期间的电话支持。
 
-1. Select the last row of the product backlog and then create a new **Product Backlog Item** with the title **Customer should see weather-related outages on portal.**
+1. 选择积压工作项的最后一行，然后创建一个新的挤压工作项，标题为 **Customer should see weather-related outages on portal.**
 
     ![](images/007.png)
 
-    > **Note:** New work items are generally inserted above the selected location. The exception is that if you select the last work item, the insertion will be after the selected location.
+    > **注意:** 新的工作项通常被插入到选定的位置之上。唯一的例外是，如果您选择了最后一个工作项，那么插入将在选定的位置之后。
 
-1. Click **Add** to add the new user story to the backlog.
+1. 点击 **Add** 添加一个新的用户故事到backlog。
 
     ![](images/008.png)
 
-1. Work items on the product backlog are ordered based on priority with high priority items at the top. Our new work item has a high priority so move it to the top of the list by dragging and dropping it into place.
+1. 积压工作项列表上的工作项是根据优先级排序的，我们的新工作项有很高的优先级，所以将它拖放到列表的顶部位置。
 
     ![](images/009.png)
 
-1. Let's edit the new user story to assign it to the appropriate product owner and record an initial estimate of expected effort. **Click** the new user story.
+1. 让我们编辑这个用户故事，将其分配给相关人员，并记录预期工作的初始估计。
 
     ![](images/010.png)
 
-1. The work item form provides full access to every detail you'll ever need for a given work item. It's designed to be responsive so it can adapt to your device's form factor. If you want to make sure you're always aware of this work item changes, you can **Follow** it to get notifications. Note that if you click a link to a work item in a mobile browser, you will be rendered a mobile-friendly work item form.
+1. 工作项表单提供了对给定 工作项所需要的每个细节的完全访问。如果你想获取这个工作项的变化，你可以点击它来获得通知。注意，如果你在移动浏览器中点击一个链接到一个工作项，你将会得到一个相关的工作项表单。
 
     ![](images/011.png)
 
-1. You can also fill out many of the extended text fields using rich text. For example, locate the **Discussion** panel and type **"Customers have been asking about this forever!"**. You can then highlight **"forever"** and press **Ctrl+B** to emphasize it.
+1. 你也可以使用富文本来扩展你的文本字段，例如，在 **Discussion** 面板中填写 **"Customers have been asking about this forever!"** ，然后选择 **"forever"** ，并且按 **Ctrl+B** 来强调。
 
     ![](images/012.png)
 
-1. You can also drag and drop attachments directly onto the work item. Select the **Attachment** tab on the right side of the work item form. Then open an instance of **Windows Explorer** to **C:\Samples** and drag the **storyboard PPTX** file onto the **Attachments** panel.
+1. 您还可以将附件直接拖放到工作项上，在工作项表单的右侧选择附件选项。然后打开Windows资源管理器，C：/样本，并将故事板PPTX文件拖放到附件面板上。
 
     ![](images/013.png)
 
-1. Return to the **Details** tab.
+1. 返回 **Details** 选项。
 
     ![](images/014.png)
 
-1. Assign the new item to **Deniz Ercoskun** (the product owner for the Fabrikam Fiber Team), set the state to **Approved**, and set an initial effort of '**8**'. Click **Save & Close**.
+1. 将新工作项分配给Deniz Ercoskun（Fabrikam Fiber团队的产品负责人），将状态设置为批准，并设置“8”的初始工作。点击 **Save & Close**。
 
     ![](images/015.png)
 
-    > **Note:** Each team may choose to define the **Effort** value as they see fit, using a unit of story points, hours, days, or number of sodas required. The point here is that this measure is a relative value with respect to other work items. Work will be broken down into hours later.
+    > **注意:** 每个团队可以选择根据他们认为合适的方式定义工作量，使用小时、天数或资源数量。这里的要点是，这个度量是相对于其他工作项的相对值，工作将在几小时后被分解。
 
-    A popular planning approach that helps to eliminate group think and considers input from all team members is known as planning poker. You can read more about it at [http://en.wikipedia.org/wiki/Planning_poker](http://en.wikipedia.org/wiki/Planning_poker).
+    一种流行的计划方法有助于简化团队计划复杂度，并考虑来自所有团队成员的产出，这被称为计划扑克。你可以在这里读到更多关于它的信息 [http://en.wikipedia.org/wiki/Planning_poker](http://en.wikipedia.org/wiki/Planning_poker)。
 
-1. Assign the new user story to the current iteration, **Iteration 3**, by dragging and dropping it as shown below.
+1. 将新的用户故事分配给当前的迭代，迭代3，通过拖放它，如下所示。
 
     ![](images/016.png)
 
-    > **Note:** If you are a Scrum purist, you are probably cringing at the fact that we just added new work to a mid-flight iteration. While this is something you might never do in the real world, this is a shortcut taken for purposes of this lab in order to simplify the workflow and still show you all of the aspects of the project management interface. Well, that and the VP told you to.
+    > **注意:** 如果您是一个Scrum纯粹主义者，您可能会对我们刚刚在中途迭代中添加新工作的事实感到很不愉快。虽然这是您在现实世界中可能永远不会做的事情，但这是为了简化工作流程而使用的一个快捷方式，并向您展示了项目管理界面的所有方面。
 
-1. Look at the **Iteration Path** for the new user story to make sure that it is assigned to **Iteration 3** as expected. This user story will remain on the product backlog until the work has been completed.
-
+1. 查看新用户故事的 **Iteration Path**，以确保它按照预期被分配到 **Iteration 3**。这个用户故事将保留在积压工作项列表中，直到工作完成。
     ![](images/017.png)
 
-1. Open the work item once again and select the **History** tab. Here you can see a complete audit trail of every action performed against this work item, as well as state graph that makes it easy to visualize changes over time. Press **Esc** to dismiss the work item.
+1. 再次打开工作项并选择History选项。在这里，您可以看到针对这个工作项所执行的每一个操作的完整的跟踪，以及状态图，使您可以很容易地看到随时间变化的变化，按Esc关闭工作项。
 
     ![](images/018.png)
 
-1. If you made a mistake when adding a work item, or if the work item simply shouldn't be part of the backlog for any reason, you can drag it to the **Recycle Bin**. Drag the item you just created onto the **Recycle Bin**. Then click the **Recycle Bin** to view its contents.
+1. 如果您在添加工作项时犯了一个错误，或者由于任何原因，工作项不应该成为待办事项列表的一部分，您可以将它拖到 **Recycle Bin** 。把刚刚创建的项目拖到 **Recycle Bin** 。然后单击 **Recycle Bin** 查看其内容。
 
     ![](images/019.png)
 
-1. Right now it only contains the item you just deleted. Fortunately, you can right-click the item and select **Restore** to put it back where it belongs. Confirm the restoration when asked.
+1. 现在它只包含你刚刚删除的条目。幸运的是，您可以右键单击该工作项并选择Restore将其还原。当被询问时，确认恢复。
 
     ![](images/020.png)
 
-1. It's now time to return to the backlog. However, since you're in the **Recycle Bin**, there's no direct path. Fortunately, TFS now supports a variety of **keyboard shortcuts** that make rapid navigation as easy as possible. Press the "**?"** key (probably **Shift+/**) on your keyboard to view the available options.
+1. 现在是回到backlog的时候了，然而，既然你在**Recycle Bin**，就没有直接的返回路径。幸运的是，TFS现在支持各种各样的键盘快捷键，使快速导航变得尽可能简单。按下 "**?"** 键（ **Shift+/**）在你的键盘上查看可用选项。
 
     ![](images/021.png)
 
-1. The shortcut to the backlog is the **l** (lowercase "L") key. Press it now to go there.
+1. 积压工作项列表的快捷方式是L（小写的“L”）键，现在就按它去那里。
 
-1. The product backlog view also provides a velocity chart that shows the amount of work that the team has undertaken in each sprint, with the current sprint breaking that down further to differentiate between work in progress and work completed. Click the mini chart in the upper-right corner to load the larger view.
+1. 积压工作项列表视图还提供了一个速度图表，显示了团队在每个sprint中所承担的工作量，当前的sprint将进一步细分，以区分正在进行中的工作和完成的工作。点击右上角的缩略图来加载更大的视图。
 
     ![](images/022.png)
 
-1. During _Iteration 1_, the team completed 35 story points worth of effort. _Iteration 2_ was more productive with 49 story points completed. The current iteration, represented by _Iteration 3_, shows that we do not currently have any work items in the Committed state. Remember that these story points are a relative measure of effort that was agreed upon by the team.
+1. 在 迭代1中, 团队完成了35个故事点。迭代2的效率更高，完成了49个故事点。当前的迭代，由迭代3表示，表明我们目前没有在提交状态中有任何工作项。请记住，这些故事点是团队一致同意的相对度量。
 
     ![](images/023.png)
 
-1. Press the **Esc** key to close the velocity chart.
+1. 按 **Esc** 键关闭速度图。
 
-1. The product backlog view also groups the past, current, and future iterations by their assigned dates. Click **Iteration 3** so that we can break down work and assign it to the appropriate team members.
+1. 积压工作项列表可以根据所分配的日期对过去、当前和未来的迭代进行分组。单击迭代3，这样我们就可以分解工作并将其分配给适当的团队成员。
 
     ![](images/024.png)
 
-1. Before we break down the new user story, let's take a quick tour of this iteration backlog view. To start with, it shows all user stories and associated tasks that are assigned to the selected iteration, regardless of state.
+1. 在我们分解新的用户故事之前，让我们快速浏览一下这个迭代backlog视图。首先，它显示了分配给选定迭代的所有用户故事和相关任务，而不考虑状态。
 
     ![](images/025.png)
 
-1. At a glance, you can see that the current iteration runs from July 1 to 12, with four work days remaining. Just to the right of the current iteration date range, there is a small graph showing the burn down of the remaining work.
+1. 一眼看去，您可以看到当前的迭代从7月1日到12日，还有4个工作天。在当前迭代日期范围的右边，有一个小图显示了剩余工作的燃尽图。
 
     **![](images/026.png)**
 
-1. Click the burn down graph to view it. The graph shows remaining work over the course of the iteration. It also provides insight for the **Available Capacity** that can be applied to the work (total work hours remaining across resources).
+1. 点击燃尽图来查看它，该图显示了在迭代过程中剩余的工作，它还可以查看应用于工作的可用容量（跨资源的总工作时间）。
 
     ![](images/027.png)
 
-1. Press the **Esc** key to close the burn down graph.
+1. 按 **Esc** 键关闭燃尽图。
 
 ### Task 3: Team Capacity Planning
 
-1. Locate the overall **Work** bar that shows how close to capacity we are for the current iteration based on the total of the Remaining Work for the tasks in this iteration and based on the total capacity for the team. It looks like we are okay now, but we still haven't broken the new user story into tasks for the team yet.
+1. 定位到整个工作条，它显示了我们对于当前迭代的能力，基于在这个迭代中任务的剩余工作的总数，并基于团队的总容量。看起来我们现在还好，但是我们还没有把新的用户故事分解成团队的任务。
 
     ![](images/028.png)
 
-1. Select the **Capacity** tab to review the team capacity details.
+1. 选择 **Capacity** 选项 来查看团队容量详细信息。
 
     ![](images/029.png)
 
-1. The capacity view allows us to specify the number of hours per day that each team member will be working on this project, days off per team member, and overall team days off. These capacity settings apply to the current iteration. You can optionally use the activity column to describe the disciplines that each team member specializes in. When tasks are broken down by activity as well, it can provide another view across your team's capacity to determine if, for example, you have enough people working on documentation to meet the demands for this iteration.  For now, leave the capacity settings unmodified.
+1. 容量视图允许我们指定每个团队成员在这个项目上工作的每天的小时数，每个团队成员的休息日，以及整个团队的休息日。这些容量设置适用于当前的迭代。您可以选择使用活动列来描述每个团队成员专门从事的规程。当任务被活动分解时，它可以为您的团队提供另一种视图，以确定是否有足够多的人处理文档以满足对迭代的需求。现在，保留容量设置未修改。The capacity view allows us to specify the number of hours per day that each team member will be working on this project, days off per team member, and overall team days off. These capacity settings apply to the current iteration. You can optionally use the activity column to describe the disciplines that each team member specializes in. When tasks are broken down by activity as well, it can provide another view across your team's capacity to determine if, for example, you have enough people working on documentation to meet the demands for this iteration.  For now, leave the capacity settings unmodified.
 
     ![](images/030.png)
 
-1. Return to the **Backlog** view for the current iteration.
+1. 回到当前迭代的 **Backlog** 视图。
 
     ![](images/031.png)
 
-1. Let's say that the decision is made to proceed with committing to the new work item. Return to the **Iteration 3** backlog view. Click the button with the '**+**' symbol in it to the left of the new user story to add a new task. This will become a child task of the user story and will be used to help describe the implementation details required to complete this user story.
+1. 假设我们决定继续提交新的工作项。返回到 **Iteration 3** backlog视图。在新用户故事的左边点击 '**+**' 按钮，添加一个新任务，用于帮助描述完成这个用户故事所需的实现细节。
 
     ![](images/032.png)
 
-1. For the new task, enter "**Consume OData feed for weather alerts**" for the Title, assign it to **Deniz Ercoskun**, and set the Remaining Work to **8** hours.
+1. 对于这个新任务, 标题输入 "**Consume OData feed for weather alerts**" , 指派给 **Deniz Ercoskun**,设置剩余工作 **8** 小时。
 
     ![](images/033.png)
 
-1. Select the **Links** tab and you can see that this task has already been linked to its parent work item.
+1. 选择 **Links** 选项你将看到这个任务已经关联父级工作项。
 
     ![](images/034.png)
 
-1. Click **Save & Close**.
+1. 点击 **Save & Close**.
 
     ![](images/035.png)
 
-1. Note that the new task was added as a child of the user story and that the overall team work bar has turned red indicating that we have too much work assigned based on capacity.
+1. 注意，新任务是作为用户故事的子任务添加的，并且整个团队工作栏已经变成红色，这表明我们有太多基于容量分配的工作。
 
     ![](images/036.png)
 
-1. It looks like the bug has not been worked on yet, so this may be a good candidate to reschedule for a future iteration so that the team can get back on track given their additional workload. Drag and drop the bug onto **Iteration 4** on the left-hand side of the window.
+1. 看起来这个bug还没有被开发出来，所以这可能是一个很好的候选者，可以重新安排到未来的迭代，这样团队就可以从超负载下回到正轨，将bug拖放到窗口左边的迭代4中。
 
     ![](images/037.png)
 
-1. Take another look at the overall **Work** bar once again to make sure it is now green. This means that we are within the current team capacity. Just don't tell the VP, or he might find another high-priority request for us to work on!
+1. 再看一遍整体的工作栏，以确保它是绿色的。这意味着我们在当前的团队能力范围内。只是不要告诉副总裁，否则他可能会找到另一个高优先级的请求，让我们继续工作！
 
     ![](images/038.png)
 
 ### Task 4: Working with the Task Board
 
-1. Now that we have finished breaking down the work and assigning it to team members, let's take a look at the task board that will be used in the next stand-up team meeting to report and record progress. Select the **Board** tab from Iteration 3.
+1. 现在，我们已经完成了工作，并将其分配给团队成员，让我们来看看在接下来的站立会议中使用的任务板，用来报告和记录进度。从迭代3中选择 **Board** 选项卡。
 
     ![](images/039.png)
 
-1. By default, the task board shows all tasks for the current iteration grouped by product backlog item and by the current state. Drag and drop the "**Consume OData feed for weather alerts**" task to the **In Progress** column.
+1. 在默认情况下，任务板显示当前迭代的所有任务，这些任务是由积压工作项列表和当前状态分组的。将 "**Consume OData feed for weather alerts**" 任务拖放到进度栏中。
 
     ![](images/040.png)
 
-    > **Note:** The task board is touch enabled as well. This will not work within this virtual machine, but you might want to put in your request now for that nice wall-mounted touch-screen monitor you have been desiring for your team.
+    > **注意:** 任务板启用了拖拽功能，你可能想要现在就为你的团队做一个漂亮的壁挂式可拖拽显示看板。
 
-1. **Single-click** the '**8**' value shown on the **Consume OData feed for weather alerts** task and change the Remaining Work to **5** to simulate Brian working on the task during the day.
+1. **单击**  **Consume OData feed for weather alerts** 任务的 '**8**' 然后修改剩余工作为 '**5**' ，以模拟在白天工作的Brian工作。
 
     ![](images/041.png)
 
-1. The new high-priority task is now in progress with an estimated 5 hours of work left to go.
+1. 新的高优先级任务现在正在进行中，估计还有5个小时的工作要完成。
 
     ![](images/042.png)
 
-1. Drag and drop the task titled **Create database for branch office location lookup** to the **Done** column to record that work as completed. Note that the remaining work is automatically reduced to **0**.
+1. 将名为 **Create database for branch office location lookup** 的任务拖放到已完成的列上，以将该工作记录为已完成的工作。注意，剩下的工作将自动减少为0。
 
     ![](images/043.png)
 
-1. Notice that the burn down chart in the top-right corner is automatically updated after you made changes on the task board. Click the burn down chart and note that there is about 15 hours of effort left in order to complete the work for the iteration.
+1. 注意，在你在任务板上做了修改之后，右上角的燃尽图会自动更新。点击“燃尽图”，并注意到为了完成迭代的工作，还有大约15个小时的工作时间。
 
     ![](images/044.png)
 
-1. Close the burn down chart.
+1. 关闭燃尽图。
 
-1. Note that each row representing a work item shows a rollup of hours remaining, which is a sum of remaining work for all child tasks. In addition to that each column representing a status has a rollup of remaining work giving you a good idea of how much work the team is actively working on right now.
+1. 注意，代表工作项的每一行显示了剩余的工作时间的汇总，另外，状态栏的每一列也显示所有子任务的剩余工作的总和。这让您很好地了解了团队目前正在进行的工作。
 
     ![](images/045.png)
 
-1. The task board also groups by team members. Select the **People** grouping option in the top-right of the task board view.
+1. 任务板也由团队成员分组，在task board视图的右上方选择 **People** 分组选项。
 
     ![](images/046.png)
 
-1. This view makes it easy to see what team members are currently working on and how much effort remains for each for the remainder of the current iteration.
+1. 这个视图使得我们可以很容易地看到团队成员当前正在进行的工作，以及在当前迭代的剩余时间里，每个成员的工作量是多少。
 
     ![](images/047.png)
 
 ### Task 5: Using work item search
 
-1. With work item search, you can quickly and easily find relevant work items across all projects in an account. Click the search box at the top of the page to expand the search help. Note that you can specify filters for properties like state and type inline.
+1. 通过工作项搜索，您可以快速轻松地在一个帐户中找到所有项目的相关工作项。点击页面顶部的搜索框，以扩展搜索帮助。请注意，您可以为诸如state和内联类型之类的属性指定过滤器。
 
     ![](images/048.png)
 
-1. Search for **customer**.
+1. 查询 **customer**。
 
     ![](images/049.png)
 
-1. There will be many results for this generic query. You can use the options on the left side to filter down to the work items you're looking for. You can also edit the selected work item inline using the form on the right.
+1. 这个通用查询将会有许多结果，您可以使用左边的选项来过滤您正在寻找的工作项，您还可以使用右边的表单编辑所选的工作项。
 
     ![](images/050.png)
 
-1. Append **"t:Task"** to the end of the query and press **Enter** to filter down to just tasks.
+1. 将“t：Task”附加到查询的末尾，并按Enter键过滤到任务。
 
     ![](images/051.png)
 
-1. Append another inline filter **"s:To Do"** and press **Enter** to filter down to tasks with that state.
+1. 附加另一个内联过滤器“s:To Do”，然后按Enter键过滤到带有该状态的任务。
 
     ![](images/052.png)
 
-1. Append **"a:Clemri"** to filter down by assignment. TFS will offer Clemri's account in a drop down. Click it to autocomplete the query.
-
+1. 附加“a：Clemri”，以通过分配来过滤。TFS将在一个下拉列表中提供Clemri的帐户，单击它以自动完成查询。
     ![](images/053.png)
 
-1. The full path to Clemri's account will be inserted. Press **Enter** to run the search.
+1. 将会插入Clemri用户的完整路径，按Enter键来运行搜索。
 
     ![](images/054.png)
 
-1. In addition to searching through work items, you can also search code using the same process in the **Code** hub.
+1. 除了在工作项中进行搜索之外，您还可以在Code hub中使用相同的过程搜索代码。
 
 ## Exercise 2: Agile Portfolio Management
 
-In this exercise, you will learn about some of the agile portfolio management capabilities provided by Team Foundation Server. These capabilities allow larger organizations to understand the scope of work across several teams and see how that work rolls up into broader initiatives. In this exercise, you will explore how multiple teams at Fabrikam Fiber can collaborate together to work on features.
+在这个练习中，您将了解到Team Foundation Server提供的一些敏捷管理功能。这些功能允许更大的组织理解跨多个团队的工作，并理解如何将工作转化为更庞大的计划。在这个练习中，您将探索如何在 Fabrikam Fiber 中进行多个团队协作。
 
 ### Task 1: Configuring Team Hierarchy and Area Paths
 
-1. Let's start out by taking a look at the Fabrikam Fiber project from the top-down, in a manner that would typically be associated with a management role.
+1. 让我们从上到下看一下 Fabrikam Fiber 项目，这种方式通常与管理角色相关。
 
-1. From the gear icon in the top-right corner of the web portal, select **Project settings**.
+1. 从web门户右上角的齿轮图标，选择 **Project settings**。
 
     ![](images/055.png)
 
-1. The FabrikamFiber project has five teams, with the **Fabrikam Fiber Leadership Team** assigned as the project default.
+1. FabrikamFiber 项目有5个团队，**Fabrikam Fiber Leadership Team** 为项目默认团队。
 
     ![](images/056.png)
 
-1. Underneath the **Work** tab, select the **Areas** tab.
+1. 在Work选项卡下面，选择 **Areas** 选项卡。
 
     ![](images/057.png)
 
-1. The management team currently owns the **Development** area and all sub-areas. This gives them visibility into the backlog of all teams, even for work items that are not mapped to features. Optionally, the management team could also choose to not include sub-areas, thereby removing work items from their product backlog view as soon as they are assigned to one of the teams.
+1. 管理团队目前拥有开发区域和所有子区域。这使他们能够看到所有团队的backlog，甚至是那些没有映射到特性的工作项。此外，管理团队还可以选择不包括子区域，因此一旦分配给其中一个团队，就可以从他们的积压工作项列表中删除工作项。
 
     ![](images/058.png)
 
-1. From the team dropdown in the upper left corner, select the **Fabrikam Fiber Database Team**.
+1. 从左上角的团队下拉，选择 **Fabrikam Fiber Database Team**。
 
     ![](images/059.png)
 
-1. Select the **Areas** tab. The **Database** team is currently configured to see work items from just the root Development area and the Database Team sub-area. This allows them to see backlog items created by the management team and ones specifically assigned to their team. With this kind of structure, each team can work independently on its own backlog, defined by its area path, unrelated to the other team's work.
+1. 选择 **Areas** 选项卡。 **Database** 团队目前被配置为可以从从根开发区域和数据库团队子区域中查看工作项。这使他们能够看到管理团队创建的积压工作项列表，以及专门分配给他们团队的项目。有了这种结构，每个团队都可以独立地在自己的待办事项列表中独立工作，这是由其区域路径定义的，与其他团队的工作无关。
 
     ![](images/060.png)
 
-1. From the project dropdown, select **Fabrikam Fiber Leadership Team** to return to that scope.
+1. 从项目下拉，选择 **Fabrikam Fiber Leadership Team** 。
 
     ![](images/061.png)
 
-1. Select **Work \| Backlogs** to return to the backlog visible to the leadership team.
+1. 选择 **Work \| Backlogs** 来返回领导组可见的backlog.
 
     ![](images/062.png)
 
-1. Select the **Backlog items** tab.
+1. 选择 **Backlog items** 选项。
 
     ![](images/063.png)
 
 ### Task 2: Portfolio Management
 
-1. The leadership team can see backlog items across all teams, including status and scheduled iteration.
+1. 领导团队可以在所有团队中看到积压工作项列表，包括状态和迭代。
 
     ![](images/064.png)
 
-1. The backlog view also includes the ability to toggle the display of in-progress work items. Toggle the "**In progress items**" link in the top-right corner of the backlog view and note that the Committed work items are no longer displayed. Toggle the link once again to view in-progress items before moving on.
+1. 积压工作项列表还包括切换正在进行的工作项显示的功能。在backlog视图的右上角切换“In progress items”，并注意已提交的工作项不再显示。在继续之前，再次切换查看正在进行的工作项。
 
     ![](images/065.png)
 
-1. Note that the in-progress work items are no longer displayed. Toggle the link once again to view in-progress items as before.
+1. 注意，正在进行的工作项不再显示。再次切换，以查看正在进行的项目。
 
-1. Click **Features** to view the feature backlog.
+1. 点击 **Features** 来查看 feature backlog.
 
     ![](images/066.png)
 
-1. This view shows the top-level features for the project. It is possible to drill down into backlog items and even individual tasks if desired. Click the **Expand** button to expand one level.
+1. 这个视图显示了项目的顶级特性。如果需要的话，可以深入到积压工作项列表中，甚至是单独的任务，单击Expand按钮以展开一个级别。
 
     ![](images/067.png)
 
-1. Click the **Expand** button once again to drill down into tasks.
+1. 点击 **Expand** 按钮 深入到任务工作项。
 
     ![](images/068.png)
 
-1. It is also possible to re-parent work items using drag-and-drop operations in the portfolio backlog view. Try this out by dragging and dropping one of the product backlog items from one feature to another.
+1. 也可以在组合 backlog视图中使用拖放操作来重新安排工作项。通过将一个产品待办事项列表中的一个项目从一个特性拖放到另一个特性中来尝试这个方法。
 
     ![](images/069.png)
 
-1. Note that this moved the product backlog item as well as all of the child tasks. Drag the product backlog item back to its original feature.
+1. 注意，移动的积压工作项以及所有的子任务，将积压工作项拖回原来的特性。
 
-1. The child work items are always shown for the leadership team, regardless of which team they are assigned to. To see this more clearly, let's add the **Area Path** column to the view.
+1. 不管他们被分配到哪个团队，子集的工作项总是显示在领导团队中。为了更清楚地看到这一点，让我们将区域路径列添加到视图列中。
 
-1. Click **Column Options**.
+1. 点击 **Column Options**.
 
     ![](images/070.png)
 
-1. Double-click **Area Path** from the available columns and then click **OK**.
+1. 双击 **Area Path** 然后点击 **OK**.
 
     ![](images/071.png)
 
     ![](images/072.png)
 
-1. If you look at the area path column for different product backlog items, you can see that they are assigned to different teams. The ability to drill down into the various backlogs gives the management team the desired level of visibility into the breakdown and implementation of features.
+1. 如果您查看不同积压工作项列表条目的区域路径，您可以看到它们被分配给不同的团队，可以让管理团队了解特性的分解和实现的功能。
+。
 
     ![](images/073.png)
 
-1. Now let's take a look at how to create a new feature and then link it to a work item that will be assigned to one of the agile teams. Create a new feature titled **"Reporting for technicians and services"** and then click the **Add** button.
+1. 现在，让我们看一看如何创建一个新特性，然后将其链接到一个工作项，该工作项将被分配给一个敏捷团队。创建一个名为 **"Reporting for technicians and services"** 的新功能，然后单击Add按钮。
 
     ![](images/074.png)
 
-1. Click the **"+"** button on the left-hand side of the new feature to add a child product backlog item.
+1. 点击新特新左边的 **"+"** 按钮添加一个子积压工作项。
 
     ![](images/075.png)
 
-1. Create a new product backlog item named **"Modify databases to support on-demand reporting for technician activity"**. Assign it to the database team lead, **Deniz Ercoskun**. Set the **Area** to the **Database Team** so that it shows up on their backlog. Finally, click **Save & Close**.
+1. 创建一个叫 **"Modify databases to support on-demand reporting for technician activity"** 的新积压工作项，分派给数据库团队lead  **Deniz Ercoskun**，设置 **Area**  **Database Team**  显示在他们的看板中。最后， 点击 **Save & Close**。
 
     ![](images/076.png)
 
-    > **Note:** In the event that you create items within the backlog, you can also easily map them to parent Features by enabling the Mapping feature and then dragging and dropping.
+    > **注意:** 如果您在积压工作项列表中创建项目，您还可以通过启用映射特性，然后拖放，轻松地将它们映射到父级的特性。
 
     ![](images/077.png)
 
-1. Now let's load the web portal for the database team. Navigate to the **Fabrikam Fiber Database Team** using the top navigation as before.
+1. 现在让我们为数据库团队加载web门户。使用顶部导航导航到 **Fabrikam Fiber Database Team** 。
 
-1. Switch to the backlog item view.
+1. 切换到backlog工作项视图。
 
     ![](images/078.png)
 
-1. Although this team may normally only want to view their backlog items, they may also want to see how those backlog items fit in to the bigger picture. Toggle the **Parents** option that is currently set to **Hide**.
+1. 尽管这个团队通常只希望查看他们的积压工作项，但是他们可能也想知道这些积压工作项的父级，切换当前设置为 **Hide** 的父级选项。
 
     ![](images/079.png)
 
-1. Note that the backlog view now shows parent Feature items.
-
+1. 注意，backlog视图现在显示了父级的特性项。
     ![](images/080.png)
 
-    **Note**: After completing this lab, the virtual machine will continue to run with the date & time that was set for demonstration purposes at the beginning of this lab. Don't forget to reset the virtual machine to its original snapshot/checkpoint after you complete this lab, unless you are moving on to a follow-up lab based on this lab's endpoint.
 
 
 
