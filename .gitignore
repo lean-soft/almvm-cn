@@ -4,3 +4,10 @@ _site/
 _pdf
 .idea/
 .DS_Store
+
+/labs/tfs
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
+/.vs/almvm-cn/v15/.suo
+/.vs/almvm-cn/v15
+/.vs
