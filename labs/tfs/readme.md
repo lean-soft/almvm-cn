@@ -8,11 +8,8 @@ landing-page: false
 ---
 <div class="tfsMain">
 <div class="productcolmain">
-  <div class="pageheader">
-             <b>Team Foundation Server动手实验</b> </div>
-     <div class="herotext2">       
-             Learn how you can remove barriers between teams, encourage collaboration, and improve the flow of value to your customers with Visual Studio and Team Foundation Server
-  </div>
+  <div class="pageheader"><b>Team Foundation Server动手实验</b></div>
+     <div class="herotext2">Learn how you can remove barriers between teams, encourage collaboration, and improve the flow of value to your customers with Visual Studio and Team Foundation Server</div>
 </div>
 </div>
 
