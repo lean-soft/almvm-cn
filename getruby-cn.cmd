@@ -50,20 +50,3 @@ call gem uninstall rubygems-update -x
 popd
 
 :end
-
-REM Need to be in Reposistory
-cd %DEPLOYMENT_SOURCE%
-cd
-
-call gem install bundler --no-ri --no-rdoc
-
-ECHO Bundler install (not update!)
-call bundle install
-
-cd %DEPLOYMENT_SOURCE%
-cd
-
-ECHO Running Jekyll
-call bundle exec jekyll build
-
-REM KuduSync is after this!
