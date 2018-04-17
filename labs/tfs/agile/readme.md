@@ -63,7 +63,7 @@ Last updated:12/5/2017
 
 1. 正如您在 **Team Members** 部分中所看到的，在这里可以添加团队成员。团队是一个概念，最初是在Team Foundation Server 2012中引入的，目的是让管理、分配和跟踪工作变得更容易。
 
-### Task 2: Working with the Backlog
+### 任务 2: 使用看板
 
 1. 通过单击 **Work** 下面的 **Backlogs** 来导航到Backlog。
 
