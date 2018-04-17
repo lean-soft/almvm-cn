@@ -50,7 +50,7 @@ summary:
 </div>
 
 </div>
-<div class="col-lg-1"></div>
+<div class="col-lg-1">本文档中文版由LEANSOFT团队翻译并维护。</div>
  <div class="clear"></div>
 
 <br/>
