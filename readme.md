@@ -50,7 +50,8 @@ summary:
 </div>
 
 </div>
-<div class="col-lg-1">本动手实验中文版由LEANSOFT翻译并维护</div>
+
+<div class="col-lg-1">本文档中文版由LEANSOFT团队翻译并维护。</div>
 <div class="clear"></div>
 
 <br/>
