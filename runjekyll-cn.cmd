@@ -9,6 +9,6 @@ cd %DEPLOYMENT_SOURCE%
 cd
 
 ECHO Running Jekyll
-call bundle exec jekyll build
+call bundle exec jekyll build --incremental
 
 REM KuduSync is after this!
