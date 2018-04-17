@@ -9,7 +9,7 @@ landing-page: false
 <div class="tfsMain">
 <div class="productcolmain">
   <div class="pageheader"><b>Team Foundation Server动手实验</b></div>
-     <div class="herotext2">Learn how you can remove barriers between teams, encourage collaboration, and improve the flow of value to your customers with Visual Studio and Team Foundation Server</div>
+     <div class="herotext2">了解如何使用Visual Studio Team Foundation Server打破团队沟通障碍，促进协作，提高生产率。</div>
 </div>
 </div>
 
@@ -19,14 +19,14 @@ landing-page: false
 ## Explore the labs
 
 <div class="lablist">
-    <div class="header2">Agile Planning</div>
+    <div class="header2">敏捷项目管理</div>
           <ul class="fa-ul">
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="agile/" >Agile Planning and Portfolio Management </a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="agileworkitems/" >Agile Work Item Management </a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="smartword4tfs/" >Introduction to the Modern Requirements Suite4TFS</a> </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="deliveryplans/" >Managing Delivery Plans</a></li>
         </ul>
-  <div class="header2">Develop</div>
+  <div class="header2">编码开发</div>
            <ul class="fa-ul">
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="devteamcollaboration/" >Collaboration Experiences for Development Teams with Wiki</a> </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="debugging/" >Debugging with IntelliTrace </a>    </li>
@@ -42,13 +42,13 @@ landing-page: false
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="git/" > Version Controlling with Git </a> </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i><a href="editorconfig/" > Working with EditorConfig</a> </li>
         </ul>
-    <div class="header2">Continuous Integration</div>
+    <div class="header2">持续集成和持续部署</div>
            <ul class="fa-ul">
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="technicaldebt/" >Managing Technical Debt with SonarQube </a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="packagemanagement/" >Package Management  </a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="build/" >Enabling Continuous Delivery </a> </li>
         </ul>
-    <div class="header2">Test Management and Execution</div>
+    <div class="header2">测试管理和测试执行</div>
            <ul class="fa-ul">
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="liveunittesting/" >Unit Testing, Code Coverage, and Code Clone Analysis </a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="intellitest/" >Generate Unit Tests with IntelliTest</a>    </li>
@@ -57,16 +57,16 @@ landing-page: false
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="codedui/" >UI Automation using Coded UI Tests</a>    </li>
           <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="load/" >Web Application Load and Performance Testing  </a> </li>
         </ul>
-      <div class="header2">Continuous Delivery</div>
+      <div class="header2">持续交付</div>
           <ul class="fa-ul">
             <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="releasemanagement/" >Embracing Continuous Delivery with Release Management </a>    </li>
             <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="readyroll/" >Develop and deploy databases with ReadyRoll</a>    </li>
             </ul>
-      <div class="header2">Application Monitoring</div>
+      <div class="header2">应用监控</div>
           <ul class="fa-ul">
             <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="appinsights/" >Instrumenting ASP.NET with Application Insights </a>    </li>
           </ul>
-      <div class="header2">Azure</div>
+      <div class="header2">微软云Azure集成</div>
           <ul class="fa-ul">
             <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="armtemplates/" >Authoring ARM Templates with Visual Studio </a>    </li>
             <li class="labslistitems"><i class="fa-li fa fa-book" style="color:  #002868;"></i> <a href="aspnetazure/" >Deploying a SQL Database backed ASP.NET app to Azure </a>    </li>
