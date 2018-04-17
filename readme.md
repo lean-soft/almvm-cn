@@ -14,19 +14,20 @@ summary:
 <div class="col-lg-10">
 <div class="rowMain">
 <div class="productcolmain">
-  <div class="pageheader">
-             <b>微软研发云DevOps动手实验</b> </div>
-     <div class="herotext2">       
-              Team Foundation Server 和 Visual Studio Team Services 动手实验
-  </div>
+  <div class="pageheader"><b>微软研发云DevOps动手实验</b></div>
+  <div class="herotext2">Team Foundation Server 和 Visual Studio Team Services 动手实验</div>
 </div>
 </div>
 
 <br>
 <span class="introText">
-微软研发云 DevOps 动手实验 是一系列的练习和实验，这其中包括了丰富内容，通过这些文档、实验和练习，可以让我们体验 Microsoft Visual Studio Team Foundation Server/Visual Studio Team Services 在 ALM/DevOps 方面提供的能力，使得我们能更好的利用微软的工具改善我们的交付流程，使我们的企业更具竞争力。 
+微软研发云 DevOps 动手实验 是一系列的练习和实验，这其中包括了丰富内容，通过这些文档、实验和练习，可以让我们体验 Microsoft Visual Studio Team Foundation Server/Visual Studio Team Services 在 ALM/DevOps 方面提供的能力，使得我们能更好的利用微软的工具改善我们的交付流程，使我们的企业更具竞争力。
 </span>
+<span class="introText">
+本文档托管于<a href="https://github.com/lean-soft/almvm-cn">Github</a>并使用Team Foundation Server进行持续集成和自动化部署到微软Azure云中国版。
 <br />
+当前CI/CD流水线状态 <img src="https://tfs.devopshub.cn/leansoft/_apis/public/build/definitions/0b879a6b-022d-41c1-8ed4-39d14eaaf50d/80/badge" />
+</span>
 <br />
  <div align="center" class="labcols">
 <div class="row" style="margin-left: 70px;">
